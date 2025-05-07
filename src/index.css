@@ -1,0 +1,205 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+
+    --primary: 260 84% 75%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 260 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    --accent: 260 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 260 84% 75%;
+
+    --radius: 0.5rem;
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 260 84% 75%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 260 84% 75%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 260 84% 70%;
+    
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 260 84% 75%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
+@layer components {
+  .hero-gradient {
+    @apply bg-gradient-to-br from-white via-brand-purple-soft to-brand-purple-light/30;
+  }
+  
+  .card-hover {
+    @apply transition-all duration-300 hover:shadow-lg hover:shadow-brand-purple/20 hover:-translate-y-1;
+  }
+  
+  .button-primary {
+    @apply bg-brand-purple hover:bg-brand-purple-700 text-white font-medium py-2 px-4 rounded-md transition-all duration-300;
+  }
+  
+  .button-secondary {
+    @apply bg-white border border-brand-purple text-brand-purple font-medium py-2 px-4 rounded-md hover:bg-brand-purple/10 transition-all duration-300;
+  }
+  
+  .card-shadow {
+    @apply shadow-md hover:shadow-xl transition-shadow duration-300;
+  }
+  
+  .wavy-border {
+    @apply relative after:absolute after:bottom-0 after:left-0 after:right-0 after:h-1 after:bg-gradient-to-r after:from-brand-purple-light after:via-brand-purple after:to-brand-purple-vivid;
+  }
+  
+  /* Add specific styles for auth pages */
+  .auth-container {
+    @apply min-h-screen w-full flex items-center justify-center p-4;
+  }
+  
+  .auth-card {
+    @apply w-full max-w-md bg-white rounded-2xl shadow-xl p-6 md:p-8;
+  }
+  
+  .auth-form-input {
+    @apply w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-purple focus:border-brand-purple;
+  }
+  
+  /* Fix Clerk form padding on mobile */
+  @media (max-width: 640px) {
+    .cl-card {
+      @apply p-0 !important;
+    }
+    
+    .cl-formButtonPrimary {
+      @apply w-full !important;
+    }
+    
+    .cl-form {
+      @apply w-full px-2 !important;
+    }
+  }
+}
+
+.staggered-animate > * {
+  opacity: 0;
+  animation: fade-in 0.7s ease-out forwards;
+}
+
+.staggered-animate > *:nth-child(1) { animation-delay: 0.1s; }
+.staggered-animate > *:nth-child(2) { animation-delay: 0.2s; }
+.staggered-animate > *:nth-child(3) { animation-delay: 0.3s; }
+.staggered-animate > *:nth-child(4) { animation-delay: 0.4s; }
+.staggered-animate > *:nth-child(5) { animation-delay: 0.5s; }
+.staggered-animate > *:nth-child(6) { animation-delay: 0.6s; }
+
+@keyframes fade-in {
+  0% { opacity: 0; transform: translateY(10px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+.upload-area {
+  @apply border-2 border-dashed rounded-lg p-10 text-center transition-all duration-300;
+}
+
+.upload-area.dragging {
+  @apply border-brand-purple bg-brand-purple/5;
+}
+
+.gradual-reveal {
+  clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+  animation: reveal 1s ease forwards;
+}
+
+@keyframes reveal {
+  0% {
+    clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+  }
+  100% {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  }
+}
+
+.chart-container {
+  transition: transform 0.5s ease, opacity 0.5s ease;
+  transform: scale(0.98);
+  opacity: 0.8;
+}
+
+.chart-container:hover {
+  transform: scale(1);
+  opacity: 1;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
