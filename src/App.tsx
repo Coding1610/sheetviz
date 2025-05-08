@@ -16,7 +16,7 @@ import SignUp from "./pages/SignUp";
 import NotFound from "./pages/NotFound";
 
 // Your publishable key from Clerk Dashboard
-const PUBLISHABLE_KEY = "pk_test_Y29ycmVjdC1zcXVpZC0zNi5jbGVyay5hY2NvdW50cy5kZXYk";
+// const PUBLISHABLE_KEY = "pk_test_Y29ycmVjdC1zcXVpZC0zNi5jbGVyay5hY2NvdW50cy5kZXYk";
 
 const queryClient = new QueryClient();
 
