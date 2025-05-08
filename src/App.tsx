@@ -1,4 +1,3 @@
-
 import { ClerkProvider } from "@clerk/clerk-react";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
@@ -11,6 +10,7 @@ import Dashboard from "./pages/Dashboard";
 import Upload from "./pages/Upload";
 import Visualization from "./pages/Visualization";
 import Profile from "./pages/Profile";
+import Admin from "./pages/Admin";
 import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
 import NotFound from "./pages/NotFound";
@@ -33,6 +33,7 @@ const App = () => (
             <Route path="/upload" element={<Upload />} />
             <Route path="/visualization/:id" element={<Visualization />} />
             <Route path="/profile" element={<Profile />} />
+            <Route path="/admin" element={<Admin />} />
             <Route path="/sign-in/*" element={<SignIn />} />
             <Route path="/sign-up/*" element={<SignUp />} />
             <Route path="*" element={<NotFound />} />

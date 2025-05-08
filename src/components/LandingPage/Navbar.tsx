@@ -14,12 +14,15 @@ import {
   NavigationMenuTrigger,
 } from '@/components/ui/navigation-menu';
 import { UserButton } from '@clerk/clerk-react';
+import { isUserAdmin } from '@/services/UserService';
+import { Shield } from 'lucide-react';
 
 const Navbar = () => {
   const { user, isSignedIn, isLoaded } = useUser();
   const { signOut } = useClerk();
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [isAdmin, setIsAdmin] = useState(false);
   const location = useLocation();
 
   useEffect(() => {
@@ -31,6 +34,20 @@ const Navbar = () => {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  useEffect(() => {
+    if (isLoaded && isSignedIn && user) {
+      // Check if the user is an admin - in a real app this would be properly handled with Clerk's metadata
+      const checkAdminStatus = async () => {
+        // For demo purposes, we'll use our UserService
+        if (user?.publicMetadata?.role === 'admin' || (user?.id && isUserAdmin(user.id))) {
+          setIsAdmin(true);
+        }
+      };
+      
+      checkAdminStatus();
+    }
+  }, [isLoaded, isSignedIn, user]);
 
   const handleSignOut = () => {
     signOut();
@@ -99,6 +116,16 @@ const Navbar = () => {
                       Dashboard
                     </Button>
                   </Link>
+                  
+                  {isAdmin && (
+                    <Link to="/admin">
+                      <Button variant="outline" className="border-purple-500 text-purple-500 hover:text-white hover:bg-purple-500 flex items-center gap-1">
+                        <Shield className="w-4 h-4" />
+                        Admin
+                      </Button>
+                    </Link>
+                  )}
+                  
                   <Link to="/profile">
                     <Button variant="outline" className="border-brand-purple text-brand-purple hover:text-white hover:bg-brand-purple">
                       Profile
@@ -159,6 +186,18 @@ const Navbar = () => {
                       >
                         Dashboard
                       </Link>
+                      
+                      {isAdmin && (
+                        <Link 
+                          to="/admin" 
+                          className="text-purple-600 font-medium py-2 flex items-center gap-2"
+                          onClick={() => setMenuOpen(false)}
+                        >
+                          <Shield className="w-4 h-4" />
+                          Admin
+                        </Link>
+                      )}
+                      
                       <Link 
                         to="/profile" 
                         className="text-brand-purple font-medium py-2"

@@ -40,9 +40,16 @@ const saveFilesToStorage = (files: FileData[]): void => {
   }
 };
 
-// Get all files for a user
+// Get all files for a user (or all files if userId is 'all' and caller is admin)
 export const getUserFiles = (userId: string): FileData[] => {
   const allFiles = getFilesFromStorage();
+  
+  // Return all files if admin requesting with 'all'
+  if (userId === 'all') {
+    return allFiles;
+  }
+  
+  // Return files for a specific user
   return allFiles.filter(file => file.userId === userId);
 };
 
@@ -68,21 +75,25 @@ export const getFileById = (fileId: number): FileData | undefined => {
   return allFiles.find(file => file.id === fileId);
 };
 
-// Delete a file
+// Delete a file (now supports admin deletion)
 export const deleteFile = (fileId: number, userId: string): boolean => {
   try {
     const allFiles = getFilesFromStorage();
     const fileToDelete = allFiles.find(file => file.id === fileId);
     
-    // Check if file exists and belongs to the user
-    if (!fileToDelete || fileToDelete.userId !== userId) {
+    // Check if file exists
+    if (!fileToDelete) {
       return false;
     }
     
-    const updatedFiles = allFiles.filter(file => file.id !== fileId);
-    saveFilesToStorage(updatedFiles);
+    // Allow deletion if user owns the file or is admin
+    if (fileToDelete.userId === userId || userId === 'admin') {
+      const updatedFiles = allFiles.filter(file => file.id !== fileId);
+      saveFilesToStorage(updatedFiles);
+      return true;
+    }
     
-    return true;
+    return false;
   } catch (error) {
     console.error('Error deleting file:', error);
     return false;
@@ -95,7 +106,12 @@ export const updateFile = (fileId: number, updates: Partial<FileData>, userId: s
     const allFiles = getFilesFromStorage();
     
     const fileIndex = allFiles.findIndex(file => file.id === fileId);
-    if (fileIndex === -1 || allFiles[fileIndex].userId !== userId) {
+    if (fileIndex === -1) {
+      return null;
+    }
+    
+    // Allow update if user owns the file or is admin
+    if (allFiles[fileIndex].userId !== userId && userId !== 'admin') {
       return null;
     }
     
