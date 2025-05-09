@@ -15,13 +15,10 @@ import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
 import NotFound from "./pages/NotFound";
 
-// Your publishable key from Clerk Dashboard
-const PUBLISHABLE_KEY = "pk_test_Y29ycmVjdC1zcXVpZC0zNi5jbGVyay5hY2NvdW50cy5kZXYk";
-
 const queryClient = new QueryClient();
 
 const App = () => (
-  <ClerkProvider publishableKey={PUBLISHABLE_KEY}>
+  <ClerkProvider publishableKey={import.meta.env.VITE_PUBLISHABLE_KEY}>
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
         <Toaster />
