@@ -1,8 +1,8 @@
-
 import React, { useState, useRef } from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { toast } from '@/components/ui/sonner';
+import { Chart3DWrapper } from '../Charts3D/Chart3DComponents';
 import {
   Bar,
   Line,
@@ -44,6 +44,7 @@ interface ChartVisualizerProps {
 }
 
 const ChartVisualizer: React.FC<ChartVisualizerProps> = ({ data, xAxis, yAxis }) => {
+  
   const [chartType, setChartType] = useState<string>('bar');
   const chartRef = useRef<HTMLDivElement>(null);
   
@@ -196,6 +197,12 @@ const ChartVisualizer: React.FC<ChartVisualizerProps> = ({ data, xAxis, yAxis })
         return <Pie data={chartData} options={chartOptions} />;
       case 'doughnut':
         return <Doughnut data={chartData} options={chartOptions} />;
+      case 'pie 3d':
+        return <Chart3DWrapper chartType="pie" chartData={chartData} xAxis={xAxis} yAxis={yAxis} />;
+      case 'column 3d':
+        return <Chart3DWrapper chartType="column" chartData={chartData} xAxis={xAxis} yAxis={yAxis} />;
+      case 'donut 3d':
+        return <Chart3DWrapper chartType="donut" chartData={chartData} xAxis={xAxis} yAxis={yAxis} />;
       default:
         return <Bar data={chartData} options={chartOptions} />;
     }
@@ -378,6 +385,27 @@ const ChartVisualizer: React.FC<ChartVisualizerProps> = ({ data, xAxis, yAxis })
             onClick={() => setChartType('doughnut')}
           >
             Doughnut Chart
+          </Button>
+          <Button 
+            variant={chartType === 'pie 3d' ? 'default' : 'outline'}
+            className={chartType === 'pie 3d' ? 'bg-brand-purple hover:bg-brand-purple-600' : ''}
+            onClick={() => setChartType('pie 3d')}
+          >
+            3D Pie Chart
+          </Button>
+          <Button 
+            variant={chartType === 'column 3d' ? 'default' : 'outline'}
+            className={chartType === 'column 3d' ? 'bg-brand-purple hover:bg-brand-purple-600' : ''}
+            onClick={() => setChartType('column 3d')}
+          >
+            3D Column Chart
+          </Button>
+          <Button 
+            variant={chartType === 'donut 3d' ? 'default' : 'outline'}
+            className={chartType === 'donut 3d' ? 'bg-brand-purple hover:bg-brand-purple-600' : ''}
+            onClick={() => setChartType('donut 3d')}
+          >
+            3D Donut Chart
           </Button>
         </div>
         
