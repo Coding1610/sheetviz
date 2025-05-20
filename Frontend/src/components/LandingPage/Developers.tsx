@@ -15,7 +15,7 @@ interface DeveloperCardProps {
 const DeveloperCard = ({ name, role, image, github, linkedin, instagram, delay = "0s" }: DeveloperCardProps) => {
   return (
     <div 
-      className="bg-white rounded-xl overflow-hidden shadow-md border border-gray-100 card-hover animate-fade-in"
+      className="bg-white rounded-xl overflow-hidden shadow-md border border-gray-100 card-hover animate-fade-in w-[450px]"
       style={{ animationDelay: delay }}
     >
       <div className="h-56 overflow-hidden">
@@ -79,7 +79,7 @@ const Developers = () => {
           </p>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 max-w-4xl mx-auto">
+        <div className="flex justify-center items-center">
           <DeveloperCard
             name="Yash Prajapati"
             role="Frontend Developer"
@@ -89,7 +89,7 @@ const Developers = () => {
             instagram="https://instagram.com/_yashu_016"
             delay="0.1s"
           />
-          <DeveloperCard
+          {/* <DeveloperCard
             name="Daniel Ahmed"
             role="Backend Developer"
             image="../public/Daniel-pic.jpg"
@@ -97,7 +97,7 @@ const Developers = () => {
             linkedin="https://www.linkedin.com/in/danielcse?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app"
             instagram="https://www.instagram.com/daniel__.exe"
             delay="0.2s"
-          />
+          /> */}
         </div>
       </div>
     </section>
