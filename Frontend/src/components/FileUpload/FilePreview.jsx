@@ -27,7 +27,7 @@ const FilePreview = ({
         <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between mb-6">
           <div>
             <div className="flex items-center">
-              <div className="bg-brandpurplesoft/90 p-2 rounded-lg mr-3">
+              <div className="bg-brandpurplesoft/50 p-2 rounded-lg mr-3">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="20"
@@ -38,7 +38,7 @@ const FilePreview = ({
                   strokeWidth="2"
                   strokeLinecap="round"
                   strokeLinejoin="round"
-                  className="text-brand-purple"
+                  className="text-darkRed"
                 >
                   <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
                   <polyline points="14 2 14 8 20 8"></polyline>
@@ -73,7 +73,7 @@ const FilePreview = ({
                 {headers.map((header, index) => (
                   <th
                     key={index}
-                    className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                    className="px-4 py-3 text-left text-xs font-medium text-darkRed uppercase tracking-wider"
                   >
                     {header}
                   </th>

@@ -10,6 +10,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { getAIInsights } from '@/utils/aiInsights';
 import { RouteSignIn, RouteUploadFile } from '@/helpers/RouteName';
+import { CloudUpload } from 'lucide-react';
 
 const Visualization = () => {
 
@@ -120,7 +121,7 @@ const Visualization = () => {
                               {Object.keys(chartData[0]).map((header) => (
                                 <th
                                   key={header}
-                                  className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                                  className="px-6 py-3 text-left text-xs font-medium text-darkRed uppercase tracking-wider"
                                 >
                                   {header}
                                 </th>
@@ -272,7 +273,6 @@ const Visualization = () => {
                   
                   <button 
                     className="w-full py-2 px-4 bg-white border border-gray-300 rounded-lg flex items-center justify-center gap-2 hover:bg-gray-50 transition-colors"
-                                
                   >
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                       <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
@@ -280,6 +280,15 @@ const Visualization = () => {
                     </svg>
                     <Link to={RouteUploadFile}>
                       <span>New Upload</span>
+                    </Link>
+                  </button>
+
+                  <button 
+                    className="w-full py-2 px-4 rounded-lg flex items-center justify-center gap-2 bg-darkRed hover:bg-midRed text-white transition-colors"
+                  >
+                    <Link to={'/'} className='flex justify-center items-center gap-2'>
+                      <CloudUpload className='text-white w-5'/>
+                      <span>Save to Cloud</span>
                     </Link>
                   </button>
                 </div>
