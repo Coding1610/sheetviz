@@ -1,9 +1,9 @@
 import React from "react";
 import { Button } from "./ui/button";
-import { LogIn } from "lucide-react";
+import { LogIn, FileUp } from "lucide-react";
 import { Link } from "react-router-dom";
 import SearchBox from "./SearchBox";
-import { RouteIndex, RouteBlogAdd, RouteProfileAdmin, RouteProfileUser, RouteSignIn, RouteLandingPage } from "@/helpers/RouteName";
+import { RouteBlogAdd, RouteProfileAdmin, RouteProfileUser, RouteSignIn, RouteLandingPage, RouteUploadFile } from "@/helpers/RouteName";
 import { useSelector } from "react-redux";
 import { UserRound, LogOut, CircleFadingPlus } from "lucide-react";
 
@@ -61,7 +61,7 @@ export default function Navbar() {
                 <PanelsTopLeft onClick={toggleSidebar} size={24} className="text-darkRed cursor-pointer md:hidden block"/>
                 <Link to={RouteLandingPage} className="flex items-center gap-2 font-roboto font-bold text-2xl text-darkRed">
                     <div className="border-l-4 border-gray-200 pl-2 md:pl-0 md:border-none">
-                        <img src={logo} className='w-10 '/>
+                        <img src={logo} className='w-8 '/>
                     </div>
                     <p className="w-0 md:w-full md:block font-bold text-2xl text-transparent bg-clip-text bg-gradient-to-r from-gray-900 via-darkRed to-midRed animate-fade-in">SheetViz</p>
                 </Link>
@@ -112,9 +112,9 @@ export default function Navbar() {
                         ?
                         <>
                         <DropdownMenuItem asChild>
-                            <Link to={RouteBlogAdd} className="font-roboto cursor-pointer">
-                               <CircleFadingPlus size={32} className="text-darkRed" />
-                                Create Blog
+                            <Link to={RouteUploadFile} className="font-roboto cursor-pointer">
+                               <FileUp size={32} className="text-darkRed" />
+                                Upload File
                             </Link>
                         </DropdownMenuItem>
                         </>

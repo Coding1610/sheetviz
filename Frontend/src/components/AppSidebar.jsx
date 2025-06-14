@@ -3,19 +3,18 @@ import {
     Sidebar,
     SidebarContent,
     SidebarGroup,
-    SidebarGroupLabel,
     SidebarHeader,
     SidebarMenu,
     SidebarMenuButton,
     SidebarMenuItem,
   } from "@/components/ui/sidebar"
 import { Link } from 'react-router-dom'
-import { House, SquareStack, Users, MessageCircleMore, NotepadText, CircleDotDashed, CirclePlus } from 'lucide-react'
-import { RouteIndex, RouteBlog, RouteBlogAdd, RouteBlogByCategory, RouteCateDetails, RouteCommentsByMe, RouteGetAllUsers, RouteGetComments, RouteGetMyBlogs, RouteMyBlogsComments } from '@/helpers/RouteName'
+import { House, SquareStack, Users, MessageCircleMore, NotepadText, FileUp, FileClock  } from 'lucide-react'
+import { RouteIndex, RouteBlog, RouteCateDetails, RouteGetAllUsers, RouteGetComments, RouteGetMyBlogs, RouteMyBlogsComments, RouteUploadFile } from '@/helpers/RouteName'
 import { useFetch } from '@/hooks/useFtech'
 import { getEnv } from '@/helpers/getEnv'
 import Loading from './Loading'
-import { MessageSquareHeart, MessageSquareShare, LibraryBig } from 'lucide-react'
+import { MessageSquareHeart,LibraryBig } from 'lucide-react'
 import { useSelector } from 'react-redux'
 import logo from '../assets/file.png'
 
@@ -56,24 +55,15 @@ export default function AppSidebar() {
                                 </SidebarMenuButton>
 
                                 <SidebarMenuButton>
-                                    <LibraryBig className='text-darkRed'/>
-                                    <Link to={RouteGetMyBlogs} className='font-semibold font-raleway'>My Blogs</Link>
+                                    <FileUp className='text-darkRed'/>
+                                    <Link to={RouteUploadFile } className='font-semibold font-raleway'>Upload New File</Link>
                                 </SidebarMenuButton>
 
                                 <SidebarMenuButton>
-                                    <MessageSquareHeart className='text-darkRed'/>
-                                    <Link to={RouteMyBlogsComments} className='font-semibold font-raleway'>Blogs Comment</Link>
+                                    <FileClock className='text-darkRed'/>
+                                    <Link to={RouteMyBlogsComments} className='font-semibold font-raleway'>Uploaded Files</Link>
                                 </SidebarMenuButton>
 
-                                <SidebarMenuButton>
-                                    <MessageSquareShare className='text-darkRed'/>
-                                    <Link to={RouteCommentsByMe} className='font-semibold font-raleway'>Commets By Me</Link>
-                                </SidebarMenuButton>
-
-                                <SidebarMenuButton>
-                                    <CirclePlus className='text-darkRed'/>
-                                    <Link to={RouteBlogAdd} className='font-semibold font-raleway'>Add New Blog</Link>
-                                </SidebarMenuButton>
                                 </>
                             ) : (
                                 // Content for other roles (e.g., Admin)
@@ -115,24 +105,6 @@ export default function AppSidebar() {
                         )}
 
                         </SidebarMenuItem>
-                    </SidebarMenu>
-                </SidebarGroup>
-                
-                <SidebarGroup>
-                    <SidebarGroupLabel className="text-[15px]">
-                        Categories
-                    </SidebarGroupLabel>
-                    <SidebarMenu>
-                        {categoryData && categoryData.length > 0 && 
-                            categoryData.map(category => 
-                                <SidebarMenuItem key={category._id}>
-                                <SidebarMenuButton>
-                                    <CircleDotDashed className='text-darkRed'/>
-                                    <Link to={RouteBlogByCategory(category.slug)} className='font-semibold font-raleway'>{category.name}</Link>
-                                </SidebarMenuButton>
-                            </SidebarMenuItem>
-                            )
-                        }
                     </SidebarMenu>
                 </SidebarGroup>
             </SidebarContent>

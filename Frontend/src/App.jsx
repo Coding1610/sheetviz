@@ -18,7 +18,7 @@ import BlogDeatils from './pages/Blog/BlogDeatils'
 import SingleBlogDetail from './pages/Blog/SingleBlogDetail'
 
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import { RouteLandingPage, RouteBlogDetails, RouteBlog, RouteBlogAdd, RouteBlogEdit, RouteIndex, RouteSignIn, RouteSignUp, RouteAddCate, RouteCateDetails, RouteEditCate, RouteBlogByCategory, RouteSearch, RouteGetComments, RouteGetAllUsers, RouteGetMyBlogs, RouteMyBlogsComments, RouteCommentsByMe, RouteProfileUser, RouteProfileAdmin, RouteNotFound } from './helpers/RouteName'
+import { RouteLandingPage, RouteBlogDetails, RouteBlog, RouteBlogAdd, RouteBlogEdit, RouteIndex, RouteSignIn, RouteSignUp, RouteAddCate, RouteCateDetails, RouteEditCate, RouteBlogByCategory, RouteSearch, RouteGetComments, RouteGetAllUsers, RouteGetMyBlogs, RouteMyBlogsComments, RouteCommentsByMe, RouteProfileUser, RouteProfileAdmin, RouteNotFound, RouteUploadFile } from './helpers/RouteName'
 import BlogByCategory from './components/BlogByCategory'
 import SearchResult from './components/SearchResult'
 import GetComments from './pages/GetComments'
@@ -30,6 +30,7 @@ import ClientRouteProtection from './components/ClientRouteProtection.jsx'
 import AdminRouteProtection from './components/AdminRouteProtection'
 import NotFound from './pages/NotFound'
 import LandingPage from './pages/LandingPage'
+import UploadForm from './components/FileUpload/UploadForm'
 
 export default function App() {
   return (
@@ -47,7 +48,8 @@ export default function App() {
               
               {/* Client Routes */}
               <Route element={<ClientRouteProtection/>} >
-                <Route path={RouteProfileUser} element={<Profile/>}/>
+                <Route path={RouteProfileUser} element={<Profile/>} />
+                <Route path={RouteUploadFile} element={<UploadForm/>} />
                 <Route path={RouteGetMyBlogs} element={<GetMyBlogs/>} />
                 <Route path={RouteMyBlogsComments} element={<MyBlogsComments/>} />
                 <Route path={RouteCommentsByMe} element={<CommentsByMe/>} />

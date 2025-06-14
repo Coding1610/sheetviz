@@ -8,6 +8,17 @@ export const RouteIndex = '/dashboard';
 export const RouteProfileUser = '/dashboard/user/profile'
 export const RouteProfileAdmin = '/dashboard/admin/profile'
 
+export const RouteUploadFile = '/dashboard/upload-file'
+export const RouteUploadFilePreview = '/dashboard/uploaded-file-preview'
+
+
+
+
+
+
+
+
+
 export const RouteCateDetails = '/dashboard/categories'
 export const RouteAddCate = '/dashboard/categories/add'
 
