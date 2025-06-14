@@ -101,8 +101,8 @@ const UploadForm = () => {
             return;
         }
 
-        toast.success('File processed successfully!');
-        navigate('/visualization/new', {
+        showToast('Success','File processed successfully');
+        navigate('/dashboard/visualization/:file_id', {
         state: {
             data: fullData,
             xAxis: selectedXAxis,

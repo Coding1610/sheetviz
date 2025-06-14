@@ -1,26 +1,27 @@
 export const RouteLandingPage = '/';
 
-export const RouteSignIn = '/sign-in'
-export const RouteSignUp = '/sign-up'
+export const RouteSignIn = '/sign-in';
+export const RouteSignUp = '/sign-up';
 
 export const RouteIndex = '/dashboard';
 
-export const RouteProfileUser = '/dashboard/user/profile'
-export const RouteProfileAdmin = '/dashboard/admin/profile'
+export const RouteProfileUser = '/dashboard/user/profile';
+export const RouteProfileAdmin = '/dashboard/admin/profile';
 
-export const RouteUploadFile = '/dashboard/upload-file'
-export const RouteUploadFilePreview = '/dashboard/uploaded-file-preview'
+export const RouteUploadFile = '/dashboard/upload-file';
+export const RouteUploadFilePreview = '/dashboard/uploaded-file-preview';
 
+export const RouteChartVisualization = (file_id) => {
+    if(file_id){
+        return `/dashboard/visualization/${file_id}`;
+    }
+    else{
+        return '/dashboard/visualization/:file_id';
+    }
+};
 
-
-
-
-
-
-
-
-export const RouteCateDetails = '/dashboard/categories'
-export const RouteAddCate = '/dashboard/categories/add'
+export const RouteCateDetails = '/dashboard/categories';
+export const RouteAddCate = '/dashboard/categories/add';
 
 export const RouteEditCate = (cate_id) => {
     if(cate_id){
@@ -41,7 +42,7 @@ export const RouteBlogEdit = (blog_id) => {
     else{
         return `/dashboard/blog/edit/:blog_id`;
     }
-}
+};
 
 export const RouteBlogDetails = (category, blog) => {
     if(!category || !blog){
@@ -50,7 +51,7 @@ export const RouteBlogDetails = (category, blog) => {
     else{
         return `/dashboard/blog/${category}/${blog}`;
     }
-}
+};
 
 export const RouteBlogByCategory = (category) => {
     if(!category){
@@ -59,7 +60,7 @@ export const RouteBlogByCategory = (category) => {
     else{
         return `/dashboard/blog/${category}`;
     }
-}
+};
 
 export const RouteSearch = (q) => {
     if(q){
@@ -68,7 +69,7 @@ export const RouteSearch = (q) => {
     else{
         return '/dashboard/blog-search';
     }
-}
+};
 
 export const RouteGetComments = '/dashboard/get-all-comments';
 export const RouteGetAllUsers = "/dashboard/get-all-users";

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
@@ -16,6 +16,11 @@ const FilePreview = ({
   onReset,
   onCreateVisualization,
 }) => {
+
+  useEffect(() => {
+    window.history.pushState(null, '', '/dashboard/upload-file-preview');
+  },[]);
+
   return (
     <div className="space-y-6 w-full pl-5 pr-5 sm:pl-15 sm:pr-15 font-roboto mb-10">
       <Card className="p-6">
