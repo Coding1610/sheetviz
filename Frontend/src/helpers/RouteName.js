@@ -20,6 +20,15 @@ export const RouteChartVisualization = (file_name) => {
     }
 };
 
+export const RouteFileView = (fileId) =>{
+    if(fileId){
+        return `/dashboard/file-view/${fileId}`;
+    }
+    else{
+        return '/dashboard/file-view/:fileId';
+    }
+}
+
 export const RouteCateDetails = '/dashboard/categories';
 export const RouteAddCate = '/dashboard/categories/add';
 

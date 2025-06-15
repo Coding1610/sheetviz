@@ -42,6 +42,9 @@ const {GetMyBlogsComments} = require('../controllers/GetMyBlogsComments');
 const { GetCommentsByMe } = require('../controllers/GetCommentsByMe');
 const { GetLikeCount } = require('../controllers/GetLikeCount');
 const UploadFile = require('../controllers/UploadFile');
+const { GetUploadedFilesById } = require('../controllers/GetUploadedFilesById');
+const { DeleteFile } = require('../controllers/DeleteFile');
+const { GetSingleFile } = require('../controllers/GetSingleFile');
 
 // create routes
 router.post('/register', Register);
@@ -94,5 +97,14 @@ router.get('/blog/comments-by-me/:id', Authenticate, GetCommentsByMe);
 
 // Upload File Route
 router.post('/upload-file', Authenticate, uploadExcel.single('file'), UploadFile.uploadFile);
+
+// Get Uploaded file by User Id
+router.get('/uploaded-files/:id', Authenticate, GetUploadedFilesById);
+
+// Delete file by File Id
+router.delete('/delete-file/:fileId', Authenticate, DeleteFile);
+
+// Get single file by Id
+router.get('/file-view/:fileId', Authenticate, GetSingleFile);
 
 module.exports = router;
