@@ -17,12 +17,8 @@ const FilePreview = ({
   onCreateVisualization,
 }) => {
 
-  useEffect(() => {
-    window.history.pushState(null, '', '/dashboard/upload-file-preview');
-  },[]);
-
   return (
-    <div className="space-y-6 w-full pl-5 pr-5 sm:pl-15 sm:pr-15 font-roboto mb-10">
+    <div className="space-y-6 w-full font-roboto mb-10">
       <Card className="p-6">
         <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between mb-6">
           <div>

@@ -13,13 +13,13 @@ exports.AdminView = async(req,res,next) => {
 
         const decodeToken = jwt.verify(token, process.env.JWT_SECRET_KEY);
 
-        const id = '68428b6fbf2fa988d8358673';
+        // const id = '68428b6fbf2fa988d8358673';
        
-        const freshUser = await User.findById(id);
+        // const freshUser = await User.findById(id);
         
-        if(freshUser.role !== decodeToken.role) {
-            decodeToken.role = freshUser.role;
-        }
+        // if(freshUser.role !== decodeToken.role) {
+            // decodeToken.role = freshUser.role;
+        // }
 
         if(decodeToken.role === 'Admin'){
             req.user = decodeToken;

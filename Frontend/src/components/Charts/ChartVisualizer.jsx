@@ -358,7 +358,7 @@ const ChartVisualizer = ({ data, xAxis, yAxis }) => {
             className={chartType === 'doughnut' ? 'bg-darkRed hover:bg-darkRed-600 rounded-lg' : 'rounded-lg'}
             onClick={() => setChartType('doughnut')}
           >
-            Doughnut Chart
+            Donut Chart
           </Button>
           <Button 
             variant={chartType === 'pie 3d' ? 'default' : 'outline'}

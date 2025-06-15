@@ -11,21 +11,51 @@ import { Input } from '@/components/ui/input';
 import { getAIInsights } from '@/utils/aiInsights';
 import { RouteSignIn, RouteUploadFile } from '@/helpers/RouteName';
 import { CloudUpload } from 'lucide-react';
+import { useSelector } from 'react-redux';
+import { getEnv } from '@/helpers/getEnv';
 
 const Visualization = () => {
 
   // const { isSignedIn, isLoaded, user } = useUser();
   const navigate = useNavigate();
   const location = useLocation();
-//   const { id } = useParams();
+  // const { id } = useParams();
 
   const [chartData, setChartData] = useState(null);
   const [xAxis, setXAxis] = useState(undefined);
   const [yAxis, setYAxis] = useState(undefined);
-//   const [shareDialogOpen, setShareDialogOpen] = useState(false);
-//   const [shareLink, setShareLink] = useState('');
+  // const [shareDialogOpen, setShareDialogOpen] = useState(false);
+  // const [shareLink, setShareLink] = useState('');
   const [aiInsights, setAiInsights] = useState("Click 'Generate Insights' to analyze your data.");
   const [isLoadingInsights, setIsLoadingInsights] = useState(false);
+  const user = useSelector((state) => state.user);
+
+  // upload file to db
+  const handleUpload = async() => {
+    
+    const userId = user?.user?._id;
+    const previewData = location.state.data;
+    const file = location.state.fileData;
+
+    const formData = new FormData();
+    formData.append('file',file);
+    formData.append('previewData', JSON.stringify(previewData));
+    formData.append('userId',userId);
+
+    const response = await fetch(`${getEnv('VITE_API_BASE_URL')}/upload-file`,{
+      method:"post",
+      credentials:'include',
+      body:formData
+    });
+
+    if(!response.ok){
+      showToast('Error', 'Error while uploading file, Please try again');
+    }
+    else{
+      showToast('Success', 'File Uploaded Successfully');
+    }
+
+  }
 
   useEffect(() => {
 
@@ -57,7 +87,7 @@ const Visualization = () => {
 
   const handleCopyLink = () => {
     navigator.clipboard.writeText(shareLink);
-    toast.success('Link copied to clipboard!');
+    showToast('Success','Link copied to clipboard!');
   };
 
   const handleShare = () => {
@@ -66,7 +96,7 @@ const Visualization = () => {
 
   const handleGetInsights = async () => {
     if (!chartData || !xAxis || !yAxis) {
-      toast.error('Data and axes must be selected to generate insights');
+      showToast('Error','Data and axes must be selected to generate insights');
       return;
     }
 
@@ -76,14 +106,14 @@ const Visualization = () => {
       const result = await getAIInsights(chartData || [], xAxis || '', yAxis || '');
 
       if (result.error) {
-        toast.error(`Error: ${result.error}`);
+        showToast('Error',`Error: ${result.error}`);
       } else {
         setAiInsights(result.insights);
-        toast.success('Insights generated successfully!');
+        showToast('Success','Insights generated successfully!');
       }
     } catch (error) {
       console.error('Error generating insights:', error);
-      toast.error('Failed to generate insights. Please try again.');
+      showToast('Error','Failed to generate insights. Please try again.');
     } finally {
       setIsLoadingInsights(false);
     }
@@ -283,13 +313,14 @@ const Visualization = () => {
                     </Link>
                   </button>
 
-                  <button 
+                  <button
+                    onClick={handleUpload} 
                     className="w-full py-2 px-4 rounded-lg flex items-center justify-center gap-2 bg-darkRed hover:bg-midRed text-white transition-colors"
                   >
-                    <Link to={'/'} className='flex justify-center items-center gap-2'>
+                    {/* <Link to={'/'} className='flex justify-center items-center gap-2'> */}
                       <CloudUpload className='text-white w-5'/>
                       <span>Save to Cloud</span>
-                    </Link>
+                    {/* </Link> */}
                   </button>
                 </div>
               </CardContent>

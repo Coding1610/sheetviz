@@ -7,6 +7,7 @@ import { showToast } from '@/helpers/showToast';
 import { FileSearch } from 'lucide-react';
 
 const UploadForm = () => {
+    
     const [file, setFile] = useState(null);
     const [isDragging, setIsDragging] = useState(false);
     const [isProcessing, setIsProcessing] = useState(false);
@@ -100,19 +101,19 @@ const UploadForm = () => {
             showToast('Error','Please select both X and Y axes for your chart');
             return;
         }
-
         showToast('Success','File processed successfully');
-        navigate('/dashboard/visualization/:file_id', {
-        state: {
-            data: fullData,
-            xAxis: selectedXAxis,
-            yAxis: selectedYAxis,
-        },
+        navigate(`/dashboard/visualization/file`, {
+            state: {
+                fileData: file,
+                data: fullData,
+                xAxis: selectedXAxis,
+                yAxis: selectedYAxis,
+            },
         });
     };
 
     return (
-        <div className="mx-auto max-w-5xl animate-fade-in w-full pl-10 pr-10 sm:pl-15 sm:pr-15 font-roboto">
+        <div className="mx-auto max-w-5xl animate-fade-in w-full pl-10 pr-10 font-roboto">
 
             <div className="mb-8 mt-8">
                 <h1 className="text-3xl font-bold">Upload Excel File</h1>

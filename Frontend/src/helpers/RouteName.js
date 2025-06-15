@@ -11,12 +11,12 @@ export const RouteProfileAdmin = '/dashboard/admin/profile';
 export const RouteUploadFile = '/dashboard/upload-file';
 export const RouteUploadFilePreview = '/dashboard/uploaded-file-preview';
 
-export const RouteChartVisualization = (file_id) => {
-    if(file_id){
-        return `/dashboard/visualization/${file_id}`;
+export const RouteChartVisualization = (file_name) => {
+    if(file_name){
+        return `/dashboard/visualization/${file_name}`;
     }
     else{
-        return '/dashboard/visualization/:file_id';
+        return '/dashboard/visualization/:file_name';
     }
 };
 

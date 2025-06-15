@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const upload = require('../config/multer');
+const {upload} = require('../config/multer');
+const {uploadExcel} = require('../config/multer');
 
 // import middleware
 const {Authenticate} = require('../middlewares/Authenticate');
@@ -40,6 +41,7 @@ const {GetMyBlogs} = require('../controllers/GetMyBlogs');
 const {GetMyBlogsComments} = require('../controllers/GetMyBlogsComments');
 const { GetCommentsByMe } = require('../controllers/GetCommentsByMe');
 const { GetLikeCount } = require('../controllers/GetLikeCount');
+const UploadFile = require('../controllers/UploadFile');
 
 // create routes
 router.post('/register', Register);
@@ -89,5 +91,8 @@ router.delete('/comment/delete/:commentId', Authenticate, DeleteComment);
 router.get('/blog/get-my-blogs/:id', Authenticate, GetMyBlogs);
 router.get('/blog/commets-on-my-blogs/:id', Authenticate, GetMyBlogsComments);
 router.get('/blog/comments-by-me/:id', Authenticate, GetCommentsByMe);
+
+// Upload File Route
+router.post('/upload-file', Authenticate, uploadExcel.single('file'), UploadFile.uploadFile);
 
 module.exports = router;

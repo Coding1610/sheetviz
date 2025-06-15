@@ -33,7 +33,7 @@ exports.UpdateUser = async(req,res,next) => {
             const uploadResult = await cloudinary.uploader.upload(
                 req.file.path,
                 {
-                    folder:"blogbrew",
+                    folder:"sheetviz",
                     resource_type:"image"
                 }
             ).catch((error) => {
