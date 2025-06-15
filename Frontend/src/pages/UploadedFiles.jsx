@@ -1,22 +1,17 @@
-import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger
-} from "@/components/ui/dropdown-menu";
-import { Upload, FilePlus } from 'lucide-react';
-import { RouteUploadFile } from '@/helpers/RouteName';
-import { useSelector } from 'react-redux';
+import React from 'react'
+import Loading from '@/components/Loading';
 import { getEnv } from '@/helpers/getEnv';
-import Loading from '../Loading';
 import { useFetch } from '@/hooks/useFtech';
-import FileCard from '../FileUpload/FileCard';
+import { useSelector } from 'react-redux';
+import FileCard from '@/components/FileUpload/FileCard';
+import { FilePlus } from 'lucide-react';
+import { Card } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
+import { Link } from 'react-router-dom';
+import { RouteUploadFile } from '@/helpers/RouteName';
 
-const Dashboard = () => {
+export default function UploadedFiles() {
+
 
     const user = useSelector((state) => state.user);
 
@@ -28,38 +23,14 @@ const Dashboard = () => {
     if(loading) return <Loading/>
 
     return (
-        <div className="mx-auto animate-fade-in w-full pl-10 pr-10 font-roboto mt-6 mb-8">
-        <div className="mb-8 animate-fade-in">
-            <h1 className="text-3xl font-bold">Welcome back, {user?.user?.name}</h1>
-            <p className="text-gray-500 mt-2">Manage your Excel visualizations and create new insights</p>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8 staggered-animate">
-            <Card className="bg-darkRed text-white pt-3">
-                <CardContent className="flex flex-col items-center justify-center h-40">
-                    <div className="text-4xl font-bold mb-2">{fileData?.files?.length > 0 ? fileData?.files?.length : 0}</div>
-                    <div className="text-lg">Uploaded Files</div>
-                </CardContent>
-            </Card>
-
-            <Card className="pt-3 border border-gray-200">
-                <CardContent className="flex flex-col items-center justify-center h-40">
-                    <div className="text-4xl font-bold mb-2 text-darkRed">7</div>
-                    <div className="text-lg text-gray-700">Different Chart Types</div>
-                </CardContent>
-            </Card>
-        </div>
-
-        <div className="flex flex-col md:flex-row items-start justify-between md:items-center mb-8 animate-fade-in gap-3 md:gap-0">
-            <h2 className="text-2xl font-bold">Your Recent Files</h2>
-            <Button asChild className="bg-darkRed hover:bg-midRed rounded-lg">
-                <Link to={RouteUploadFile} className="text-white font-roboto">
-                <Upload className="text-white" />
-                    Upload New File
-                </Link>
-            </Button>
-        </div>
-
+        <>
+        <div className="mx-auto max-w-5xl animate-fade-in w-full pl-10 pr-10 font-roboto mb-8">
+            <div className="mb-8 mt-8">
+                <h1 className="text-3xl font-bold">Monitor History</h1>
+                <p className="text-gray-600 mt-2">
+                    Monitor your file access and deletion activity in real-time
+                </p>
+            </div>
         {fileData?.files?.length > 0 ? 
             <>
             <div className='flex flex-col gap-4'>
@@ -110,7 +81,6 @@ const Dashboard = () => {
             </>
         }
         </div>
-    );
-};
-
-export default Dashboard;
+    </>
+  )
+}

@@ -10,13 +10,13 @@ import {
   } from "@/components/ui/sidebar"
 import { Link } from 'react-router-dom'
 import { House, SquareStack, Users, MessageCircleMore, NotepadText, FileUp, FileClock  } from 'lucide-react'
-import { RouteIndex, RouteBlog, RouteCateDetails, RouteGetAllUsers, RouteGetComments, RouteGetMyBlogs, RouteMyBlogsComments, RouteUploadFile } from '@/helpers/RouteName'
+import { RouteIndex, RouteBlog, RouteCateDetails, RouteGetAllUsers, RouteGetComments, RouteUploadFile, RouteUploadedFiles } from '@/helpers/RouteName'
 import { useFetch } from '@/hooks/useFtech'
 import { getEnv } from '@/helpers/getEnv'
 import Loading from './Loading'
-import { MessageSquareHeart,LibraryBig } from 'lucide-react'
 import { useSelector } from 'react-redux'
 import logo from '../assets/file.png'
+import { LayoutDashboard } from 'lucide-react'
 
 export default function AppSidebar() {
 
@@ -50,8 +50,8 @@ export default function AppSidebar() {
                                 // Content for 'User' role
                                 <>
                                 <SidebarMenuButton>
-                                    <House className='text-darkRed'/>
-                                    <Link to={RouteIndex} className='font-semibold font-raleway'> Home </Link>
+                                    <LayoutDashboard className='text-darkRed'/>
+                                    <Link to={RouteIndex} className='font-semibold font-raleway'> Dashboard </Link>
                                 </SidebarMenuButton>
 
                                 <SidebarMenuButton>
@@ -61,7 +61,7 @@ export default function AppSidebar() {
 
                                 <SidebarMenuButton>
                                     <FileClock className='text-darkRed'/>
-                                    <Link to={RouteMyBlogsComments} className='font-semibold font-raleway'>Uploaded Files</Link>
+                                    <Link to={RouteUploadedFiles} className='font-semibold font-raleway'>Uploaded Files</Link>
                                 </SidebarMenuButton>
 
                                 </>

@@ -29,6 +29,8 @@ export const RouteFileView = (fileId) =>{
     }
 }
 
+export const RouteUploadedFiles = '/dashboard/uploaded-files';
+
 export const RouteCateDetails = '/dashboard/categories';
 export const RouteAddCate = '/dashboard/categories/add';
 

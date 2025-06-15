@@ -17,7 +17,7 @@ import BlogDeatils from './pages/Blog/BlogDeatils'
 import SingleBlogDetail from './pages/Blog/SingleBlogDetail'
 
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import { RouteLandingPage, RouteBlogDetails, RouteBlog, RouteBlogAdd, RouteBlogEdit, RouteIndex, RouteSignIn, RouteSignUp, RouteAddCate, RouteCateDetails, RouteEditCate, RouteBlogByCategory, RouteSearch, RouteGetComments, RouteGetAllUsers, RouteGetMyBlogs, RouteMyBlogsComments, RouteCommentsByMe, RouteProfileUser, RouteProfileAdmin, RouteNotFound, RouteUploadFile, RouteChartVisualization, RouteFileView } from './helpers/RouteName'
+import { RouteLandingPage, RouteBlogDetails, RouteBlog, RouteBlogAdd, RouteBlogEdit, RouteIndex, RouteSignIn, RouteSignUp, RouteAddCate, RouteCateDetails, RouteEditCate, RouteBlogByCategory, RouteSearch, RouteGetComments, RouteGetAllUsers, RouteGetMyBlogs, RouteMyBlogsComments, RouteCommentsByMe, RouteProfileUser, RouteProfileAdmin, RouteNotFound, RouteUploadFile, RouteChartVisualization, RouteFileView, RouteUploadedFiles } from './helpers/RouteName'
 import BlogByCategory from './components/BlogByCategory'
 import SearchResult from './components/SearchResult'
 import GetComments from './pages/GetComments'
@@ -33,6 +33,7 @@ import UploadForm from './components/FileUpload/UploadForm'
 import Visualization from './pages/Visualization'
 import Dashboard from './components/Dashboard/Dashboard'
 import FileView from './pages/FileView'
+import UploadedFiles from './pages/UploadedFiles'
 
 export default function App() {
   return (
@@ -54,6 +55,7 @@ export default function App() {
                 <Route path={RouteUploadFile} element={<UploadForm/>} />
                 <Route path={RouteChartVisualization()} element={<Visualization/>} />
                 <Route path={RouteFileView()} element={<FileView/>} />
+                <Route path={RouteUploadedFiles} element={<UploadedFiles/>} />
                 {/* <Route path={RouteGetMyBlogs} element={<GetMyBlogs/>} />
                 <Route path={RouteMyBlogsComments} element={<MyBlogsComments/>} />
                 <Route path={RouteCommentsByMe} element={<CommentsByMe/>} />
