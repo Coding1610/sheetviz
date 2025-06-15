@@ -2,10 +2,9 @@ import React from "react";
 import { Button } from "./ui/button";
 import { LogIn, FileUp } from "lucide-react";
 import { Link } from "react-router-dom";
-import SearchBox from "./SearchBox";
-import { RouteBlogAdd, RouteProfileAdmin, RouteProfileUser, RouteSignIn, RouteLandingPage, RouteUploadFile } from "@/helpers/RouteName";
+import { RouteProfileAdmin, RouteProfileUser, RouteSignIn, RouteLandingPage, RouteUploadFile } from "@/helpers/RouteName";
 import { useSelector } from "react-redux";
-import { UserRound, LogOut, CircleFadingPlus } from "lucide-react";
+import { UserRound, LogOut } from "lucide-react";
 
 import {
     DropdownMenu,
@@ -66,10 +65,6 @@ export default function Navbar() {
                     <p className="w-0 md:w-full md:block font-bold text-2xl text-transparent bg-clip-text bg-gradient-to-r from-gray-900 via-darkRed to-midRed animate-fade-in">SheetViz</p>
                 </Link>
             </div>
-        {/* search input */}
-        <div className="w-[130px] sm:w-[330px] md:w-[400px]">
-            <SearchBox />
-        </div>
         {/* sign in button */}
         <div className="flex items-center">
             {!user.isLoggedIn ? 

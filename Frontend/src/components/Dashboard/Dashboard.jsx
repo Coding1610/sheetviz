@@ -64,7 +64,7 @@ const Dashboard = () => {
             <>
             <div className='flex flex-col gap-4'>
 
-                {fileData.files.map((file,index) => {
+                {fileData.files.slice(0, 2).map((file,index) => {
                     const fileHeader = file.previewData?.length > 0
                     ?
                     Object.keys(file.previewData[0])
