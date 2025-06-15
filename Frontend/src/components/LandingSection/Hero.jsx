@@ -18,11 +18,11 @@ const Hero = () => {
       </div>
       
       <div className="max-w-4xl mx-auto text-center relative z-10">
-        <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r text-white animate-fade-in">
+        <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-gray-900 via-darkRed to-midRed animate-fade-in">
           SheetViz
         </h1>
         
-        <p className="text-xl md:text-2xl text-white/70 mb-8 max-w-2xl mx-auto animate-fade-in" style={{ animationDelay: "0.2s" }}>
+        <p className="text-xl md:text-2xl text-gray-700 mb-8 max-w-2xl mx-auto animate-fade-in" style={{ animationDelay: "0.2s" }}>
           Upload and visualize Excel files with interactive charts and smart insights
         </p>
         

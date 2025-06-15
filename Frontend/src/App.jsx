@@ -2,7 +2,6 @@ import './index.css'
 import React from 'react'
 import Layout from './layout/Layout'
 
-import Index from './pages/Index'
 import Profile from './pages/Profile'
 
 import SignIn from './pages/SignIn'
@@ -32,6 +31,7 @@ import NotFound from './pages/NotFound'
 import LandingPage from './pages/LandingPage'
 import UploadForm from './components/FileUpload/UploadForm'
 import Visualization from './pages/Visualization'
+import Dashboard from './components/Dashboard/Dashboard'
 
 export default function App() {
   return (
@@ -44,7 +44,7 @@ export default function App() {
             <Route path={RouteIndex} element={<Layout/>}>
 
               {/* Home Page Route */}
-              <Route path={RouteIndex} element={<Index/>}/>
+              <Route path={RouteIndex} element={<Dashboard/>} />
               {/* when you want to make any default page then set "index" to it*/}
               
               {/* Client Routes */}
