@@ -10,7 +10,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { getAIInsights } from '@/utils/aiInsights';
 import { RouteSignIn, RouteUploadFile } from '@/helpers/RouteName';
-import { CloudUpload } from 'lucide-react';
+import { CloudUpload, Loader2, CheckCircle } from 'lucide-react';
 import { useSelector } from 'react-redux';
 import { getEnv } from '@/helpers/getEnv';
 
@@ -20,6 +20,8 @@ const Visualization = () => {
   const navigate = useNavigate();
   const location = useLocation();
   // const { id } = useParams();
+
+  const [uploadStatus, setUploadStatus] = useState('idle');
 
   const [chartData, setChartData] = useState(null);
   const [xAxis, setXAxis] = useState(undefined);
@@ -31,31 +33,66 @@ const Visualization = () => {
   const user = useSelector((state) => state.user);
 
   // upload file to db
-  const handleUpload = async() => {
+  // const handleUpload = async() => {
     
-    const userId = user?.user?._id;
-    const previewData = location.state.data;
-    const file = location.state.fileData;
+  //   const userId = user?.user?._id;
+  //   const previewData = location.state.data;
+  //   const file = location.state.fileData;
 
-    const formData = new FormData();
-    formData.append('file',file);
-    formData.append('previewData', JSON.stringify(previewData));
-    formData.append('userId',userId);
+  //   const formData = new FormData();
+  //   formData.append('file',file);
+  //   formData.append('previewData', JSON.stringify(previewData));
+  //   formData.append('userId',userId);
 
-    const response = await fetch(`${getEnv('VITE_API_BASE_URL')}/upload-file`,{
-      method:"post",
-      credentials:'include',
-      body:formData
-    });
+  //   const response = await fetch(`${getEnv('VITE_API_BASE_URL')}/upload-file`,{
+  //     method:"post",
+  //     credentials:'include',
+  //     body:formData
+  //   });
 
-    if(!response.ok){
-      showToast('Error', 'Error while uploading file, Please try again');
+  //   if(!response.ok){
+  //     showToast('Error', 'Error while uploading file, Please try again');
+  //   }
+  //   else{
+  //     showToast('Success', 'File Uploaded Successfully');
+  //   }
+
+  // }
+
+  const handleUpload = async () => {
+    if (uploadStatus !== 'idle') return;
+
+    setUploadStatus('uploading');
+
+    try {
+      const userId = user?.user?._id;
+      const previewData = location.state.data;
+      const file = location.state.fileData;
+
+      const formData = new FormData();
+      formData.append('file', file);
+      formData.append('previewData', JSON.stringify(previewData));
+      formData.append('userId', userId);
+
+      const response = await fetch(`${getEnv('VITE_API_BASE_URL')}/upload-file`, {
+        method: 'post',
+        credentials: 'include',
+        body: formData,
+      });
+
+      if (!response.ok) {
+        showToast('Error', 'Error while uploading file, Please try again');
+        setUploadStatus('idle');
+      } else {
+        showToast('Success', 'File Uploaded Successfully');
+        setUploadStatus('uploaded');
+      }
+    } catch (error) {
+      console.error('Upload error:', error);
+      showToast('Error', 'Something went wrong');
+      setUploadStatus('idle');
     }
-    else{
-      showToast('Success', 'File Uploaded Successfully');
-    }
-
-  }
+  };
 
   useEffect(() => {
 
@@ -313,14 +350,41 @@ const Visualization = () => {
                     </Link>
                   </button>
 
-                  <button
+                  {/* <button
                     onClick={handleUpload} 
                     className="w-full py-2 px-4 rounded-lg flex items-center justify-center gap-2 bg-darkRed hover:bg-midRed text-white transition-colors"
                   >
-                    {/* <Link to={'/'} className='flex justify-center items-center gap-2'> */}
                       <CloudUpload className='text-white w-5'/>
                       <span>Save to Cloud</span>
-                    {/* </Link> */}
+                  </button> */}
+
+                  <button
+                    onClick={handleUpload}
+                    className={`w-full py-2 px-4 rounded-lg flex items-center justify-center gap-2 text-white transition-colors
+                      ${uploadStatus === 'uploaded' ? 'bg-green-600 cursor-not-allowed' :
+                        uploadStatus === 'uploading' ? 'bg-gray-600 cursor-wait' :
+                        'bg-darkRed hover:bg-midRed'}
+                    `}
+                    disabled={uploadStatus !== 'idle'}
+                  >
+                    {
+                      uploadStatus === 'uploading' ? (
+                        <>
+                          <Loader2 className='w-5 animate-spin' />
+                          <span>Uploading...</span>
+                        </>
+                      ) : uploadStatus === 'uploaded' ? (
+                        <>
+                          <CheckCircle className='w-5' />
+                          <span>Uploaded</span>
+                        </>
+                      ) : (
+                        <>
+                          <CloudUpload className='w-5' />
+                          <span>Save to Cloud</span>
+                        </>
+                      )
+                    }
                   </button>
                 </div>
               </CardContent>
