@@ -31,6 +31,9 @@ export const RouteFileView = (fileId) =>{
 
 export const RouteUploadedFiles = '/dashboard/uploaded-files';
 
+export const RouteGetAllFiles = '/dashboard/get-all-files';
+export const RouteGetAllUsers = "/dashboard/get-all-users";
+
 export const RouteCateDetails = '/dashboard/categories';
 export const RouteAddCate = '/dashboard/categories/add';
 
@@ -83,7 +86,6 @@ export const RouteSearch = (q) => {
 };
 
 export const RouteGetComments = '/dashboard/get-all-comments';
-export const RouteGetAllUsers = "/dashboard/get-all-users";
 
 // Client Side
 export const RouteGetMyBlogs = '/dashboard/blog/my-blogs';

@@ -17,7 +17,7 @@ import BlogDeatils from './pages/Blog/BlogDeatils'
 import SingleBlogDetail from './pages/Blog/SingleBlogDetail'
 
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import { RouteLandingPage, RouteBlogDetails, RouteBlog, RouteBlogAdd, RouteBlogEdit, RouteIndex, RouteSignIn, RouteSignUp, RouteAddCate, RouteCateDetails, RouteEditCate, RouteBlogByCategory, RouteSearch, RouteGetComments, RouteGetAllUsers, RouteGetMyBlogs, RouteMyBlogsComments, RouteCommentsByMe, RouteProfileUser, RouteProfileAdmin, RouteNotFound, RouteUploadFile, RouteChartVisualization, RouteFileView, RouteUploadedFiles } from './helpers/RouteName'
+import { RouteLandingPage, RouteBlogDetails, RouteBlog, RouteBlogAdd, RouteBlogEdit, RouteIndex, RouteSignIn, RouteSignUp, RouteAddCate, RouteCateDetails, RouteEditCate, RouteBlogByCategory, RouteSearch, RouteGetComments, RouteGetAllUsers, RouteGetMyBlogs, RouteMyBlogsComments, RouteCommentsByMe, RouteProfileUser, RouteProfileAdmin, RouteNotFound, RouteUploadFile, RouteChartVisualization, RouteFileView, RouteUploadedFiles, RouteGetAllFiles } from './helpers/RouteName'
 import BlogByCategory from './components/BlogByCategory'
 import SearchResult from './components/SearchResult'
 import GetComments from './pages/GetComments'
@@ -34,6 +34,7 @@ import Visualization from './pages/Visualization'
 import Dashboard from './components/Dashboard/Dashboard'
 import FileView from './pages/FileView'
 import UploadedFiles from './pages/UploadedFiles'
+import GetAllFiles from './pages/GetAllFiles'
 
 export default function App() {
   return (
@@ -66,12 +67,13 @@ export default function App() {
               {/* Admin Routes */}
               <Route element={<AdminRouteProtection/>} >
                 <Route path={RouteProfileAdmin} element={<Profile/>}/>
-                <Route path={RouteCateDetails} element={<CateDeatils/>}/>
-                <Route path={RouteAddCate} element={<AddCate/>}/>
-                <Route path={RouteEditCate()} element={<EditCate/>}/>
-                <Route path={RouteBlog} element={<BlogDeatils/>}/>
-                <Route path={RouteGetComments} element={<GetComments/>}/>
                 <Route path={RouteGetAllUsers} element={<GetAllUsers/>}/>
+                <Route path={RouteGetAllFiles} element={<GetAllFiles/>} />
+                {/* <Route path={RouteCateDetails} element={<CateDeatils/>}/> */}
+                {/* <Route path={RouteAddCate} element={<AddCate/>}/> */}
+                {/* <Route path={RouteEditCate()} element={<EditCate/>}/> */}
+                {/* <Route path={RouteBlog} element={<BlogDeatils/>}/> */}
+                {/* <Route path={RouteGetComments} element={<GetComments/>}/> */}
               </Route>
 
               {/* Public Routes */}

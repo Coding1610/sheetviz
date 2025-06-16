@@ -10,13 +10,13 @@ import {
   } from "@/components/ui/sidebar"
 import { Link } from 'react-router-dom'
 import { House, SquareStack, Users, MessageCircleMore, NotepadText, FileUp, FileClock  } from 'lucide-react'
-import { RouteIndex, RouteBlog, RouteCateDetails, RouteGetAllUsers, RouteGetComments, RouteUploadFile, RouteUploadedFiles } from '@/helpers/RouteName'
+import { RouteIndex, RouteBlog, RouteCateDetails, RouteGetAllUsers, RouteGetComments, RouteUploadFile, RouteUploadedFiles, RouteGetAllFiles } from '@/helpers/RouteName'
 import { useFetch } from '@/hooks/useFtech'
 import { getEnv } from '@/helpers/getEnv'
 import Loading from './Loading'
 import { useSelector } from 'react-redux'
 import logo from '../assets/file.png'
-import { LayoutDashboard } from 'lucide-react'
+import { Files, LayoutDashboard } from 'lucide-react'
 
 export default function AppSidebar() {
 
@@ -69,28 +69,18 @@ export default function AppSidebar() {
                                 // Content for other roles (e.g., Admin)
                                 <>
                                 <SidebarMenuButton>
-                                    <House className='text-darkRed'/>
-                                    <Link to={RouteIndex} className='font-semibold font-raleway'> Home </Link>
+                                    <LayoutDashboard className='text-darkRed'/>
+                                    <Link to={RouteIndex} className='font-semibold font-raleway'> Dashboard </Link>
                                 </SidebarMenuButton>
                                 
                                 <SidebarMenuButton>
-                                    <SquareStack className='text-darkRed'/>
-                                    <Link to={RouteCateDetails} className='font-semibold font-raleway'> Categories </Link>
-                                </SidebarMenuButton>
-
-                                <SidebarMenuButton> 
-                                    <NotepadText className='text-darkRed'/>
-                                    <Link to={RouteBlog} className='font-semibold font-raleway'> Blogs </Link>
-                                </SidebarMenuButton>
-
-                                <SidebarMenuButton>
-                                    <MessageCircleMore className='text-darkRed'/>
-                                    <Link to={RouteGetComments} className='font-semibold font-raleway'> Comments </Link>
-                                </SidebarMenuButton>
-
-                                <SidebarMenuButton>
                                     <Users className='text-darkRed'/>
                                     <Link to={RouteGetAllUsers} className='font-semibold font-raleway'> Users </Link>
+                                </SidebarMenuButton>
+
+                                <SidebarMenuButton>
+                                    <Files className='text-darkRed'/>
+                                    <Link to={RouteGetAllFiles} className='font-semibold font-raleway'> Files </Link>
                                 </SidebarMenuButton>
                                 </>
                             )
