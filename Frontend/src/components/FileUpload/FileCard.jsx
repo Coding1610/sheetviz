@@ -22,9 +22,7 @@ export default function FileCard({
     const handleDelete = (id) => {
         const response = deleteData(`${getEnv('VITE_API_BASE_URL')}/delete-file/${id}`);
         if(response){
-            showToast('Success','File Deleted Successfully');
             navigate(0);
-
         }
         else{
             showToast('Error','Error while deleting File');
