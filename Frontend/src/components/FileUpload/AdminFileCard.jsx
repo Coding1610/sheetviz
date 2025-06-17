@@ -4,10 +4,9 @@ import { Button } from '../ui/button'
 import { Link } from 'react-router-dom'
 import { deleteData } from '@/helpers/handleDelete'
 import { getEnv } from '@/helpers/getEnv'
-import { Eye, Trash } from 'lucide-react'
+import { Trash } from 'lucide-react'
 import { showToast } from '@/helpers/showToast'
 import { useNavigate } from 'react-router-dom'
-import { RouteFileView } from '@/helpers/RouteName'
 
 export default function AdminFileCard({
     fileId,
@@ -46,11 +45,6 @@ export default function AdminFileCard({
                             <span className="text-[15px] font-semibold text-black">{author}</span>
                         </div>
                         <div className='flex items-center gap-2'>
-                            <Button className="rounded-full px-2.5 bg-white border-none shadow-none hover:bg-darkRed text-darkRed hover:text-white">
-                                <Link to={RouteFileView(fileId)}>
-                                <Eye size={16}/>
-                                </Link>
-                            </Button>
                             <Button onClick={ () => handleDelete(fileId)} className="rounded-full px-2.5 bg-white border-none shadow-none hover:bg-darkRed text-darkRed hover:text-white">
                                 <Link>
                                     <Trash size={16}/>

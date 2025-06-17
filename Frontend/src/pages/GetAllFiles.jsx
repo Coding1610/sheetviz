@@ -23,7 +23,7 @@ export default function GetAllFiles() {
             <div className="mb-8 mt-8">
                 <h1 className="text-3xl font-bold">File Management</h1>
                 <p className="text-gray-600 mt-2">
-                  Access and manage all files uploaded by users. You can delete files to maintain system integrity.
+                  Access and manage all files uploaded by users, You can delete files to maintain system integrity
                 </p>
             </div>
         {fileData?.files?.length > 0 ? 
@@ -60,7 +60,7 @@ export default function GetAllFiles() {
             <Card className="p-8 text-center">
                 <FileX2 className='text-center w-full text-darkRed mb-3' size={32}/>
                 <h3 className="text-lg font-medium mb-3">No Files Found</h3>
-                <p className="text-gray-500">View and manage all files uploaded by users across the platform. You can delete any file from here.</p>
+                <p className="text-gray-500">There are currently no files uploaded by users, once users upload files, they will be listed here for review and management</p>
             </Card>
             </>
         }
