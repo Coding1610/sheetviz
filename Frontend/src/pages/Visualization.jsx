@@ -324,7 +324,7 @@ const Visualization = () => {
               <CardContent className="p-6">
                 <h3 className="font-medium text-lg mb-3">Actions</h3>
                 <div className="space-y-2">
-                  <button 
+                  {/* <button 
                     className="w-full py-2 px-4 bg-white border border-gray-300 rounded-lg flex items-center justify-center gap-2 hover:bg-gray-50 transition-colors"
                     onClick={handleShare}
                   >
@@ -336,7 +336,7 @@ const Visualization = () => {
                       <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
                     </svg>
                     <span>Share</span>
-                  </button>
+                  </button> */}
                   
                   <button 
                     className="w-full py-2 px-4 bg-white border border-gray-300 rounded-lg flex items-center justify-center gap-2 hover:bg-gray-50 transition-colors"

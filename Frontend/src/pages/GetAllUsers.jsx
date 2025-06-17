@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import { Card } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
-import { Link } from 'react-router-dom'
 import { useFetch } from '@/hooks/useFtech'
 import {
     Table,
@@ -19,10 +18,23 @@ import { showToast } from '@/helpers/showToast'
 import moment from 'moment'
 import { Avatar, AvatarFallback, AvatarImage } from '@radix-ui/react-avatar'
 import { useSelector } from 'react-redux'
+import {
+    Dialog,
+    DialogContent,
+    DialogDescription,
+    DialogHeader,
+    DialogTitle,
+    DialogTrigger,
+  } from "@/components/ui/dialog"
+  import { Input } from '@/components/ui/input'
  
 export default function GetAllUsers() {
 
     const [refreshData, setRefreshData] = useState(false);
+
+    const [confirmationText, setConfirmationText] = useState('');
+    const requiredText = `delete-${name}`;
+    const [open, setOpen] = useState(false); // dialog state
 
     const user = useSelector((state) => state.user);
 
@@ -89,11 +101,49 @@ export default function GetAllUsers() {
                                     </TableCell>
                                     <TableCell>{u?.createdAt ? moment(u?.createdAt).format('DD-MM-YYYY') : '_'}</TableCell>
                                     <TableCell className="flex items-center">
-                                        <Button onClick={() => handleDelete(u?._id)} className={` ${u?.role === 'Admin' ? 'hidden bg-darkRed/30' : 'bg-white' } rounded-full px-2.5 border-none shadow-none hover:bg-darkRed text-darkRed hover:text-white`}>
+                                        {/* <Button onClick={() => handleDelete(u?._id)} className={` ${u?.role === 'Admin' ? 'hidden bg-darkRed/30' : 'bg-white' } rounded-full px-2.5 border-none shadow-none hover:bg-darkRed text-darkRed hover:text-white`}>
                                             <Link>
                                                 <Trash size={16}/>
                                             </Link>
-                                        </Button>
+                                        </Button> */}
+                                        {/* Delete Dialog */}
+                                        <Dialog open={open} onOpenChange={setOpen}>
+                                            <DialogTrigger asChild>
+                                                <Button
+                                                    className="rounded-full h-max p-2.5 bg-white border-none shadow-none hover:bg-darkRed text-darkRed hover:text-white"
+                                                    onClick={() => setOpen(true)}
+                                                >
+                                                    <Trash size={16} />
+                                                </Button>
+                                            </DialogTrigger>
+                                            <DialogContent>
+                                                <DialogHeader>
+                                                    <DialogTitle className="text-red-600">Confirm User Deletion</DialogTitle>
+                                                </DialogHeader>
+                                                <p className="text-md text-gray-700 mb-2">
+                                                    This action will permanently delete <strong>{u?.name}</strong> account.
+                                                    To confirm, type <span className="font-mono bg-gray-100 px-1 py-0.5 rounded">delete-{u?.name}</span> below.
+                                                </p>
+                                                <Input
+                                                    className="font-roboto font-normal h-10 rounded-lg focus-visible:ring-darkRed focus:outline-none bg-gray-50"
+                                                    placeholder={`delete-${u?.name}`}
+                                                    value={confirmationText}
+                                                    onChange={(e) => setConfirmationText(e.target.value)}
+                                                />
+                                                <div className="flex justify-end mt-4">
+                                                    <Button variant="outline" onClick={() => setOpen(false)} className="mr-2">
+                                                        Cancel
+                                                    </Button>
+                                                    <Button
+                                                        variant="destructive"
+                                                        disabled={confirmationText !== requiredText}
+                                                        onClick={handleDelete(u?._id)}
+                                                    >
+                                                        Delete
+                                                    </Button>
+                                                </div>
+                                            </DialogContent>
+                                        </Dialog>
                                     </TableCell>
                                 </TableRow>
                                 </>    
