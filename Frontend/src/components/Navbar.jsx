@@ -68,13 +68,8 @@ export default function Navbar() {
         {/* sign in button */}
         <div className="flex items-center">
             {!user.isLoggedIn ? 
-
-                <Button asChild className="bg-darkRed hover:bg-midRed rounded-lg">
-                    <Link to={RouteSignIn} className="text-white font-roboto">
-                    <LogIn className="text-white" />
-                        Sign In
-                    </Link>
-                </Button>
+                <>
+                </>
                 :
                 <DropdownMenu>
                     <DropdownMenuTrigger>

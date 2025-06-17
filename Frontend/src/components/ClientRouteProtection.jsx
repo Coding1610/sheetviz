@@ -2,6 +2,10 @@ import React from 'react'
 import { useSelector } from 'react-redux'
 import { Outlet } from 'react-router-dom';
 import logo from '../assets/file.png'
+import { Button } from './ui/button';
+import { RouteIndex, RouteSignIn } from '@/helpers/RouteName';
+import { LayoutDashboard, LogIn } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 export default function ClientRouteProtection() {
 
@@ -15,16 +19,39 @@ export default function ClientRouteProtection() {
     else{
         return (
             <>
-             <div className="flex flex-col items-center justify-center px-6 text-center font-roboto">
-                <div className="animate-bounce mb-4">
-                    <img src={logo} className='w-12 h-12'/>
+            {user?.isLoggedIn ?
+                <>
+                <div className="flex flex-col items-center gap-2 justify-center px-6 text-center font-roboto">
+                    <div className="animate-bounce">
+                        <img src={logo} className='w-12 h-12'/>
+                    </div>
+                    <h2 className="text-2xl font-bold text-gray-800">Access Denied – Client only</h2>
+                    <p className="text-gray-500 text-lg">You do not have the required permissions to access this page</p>
+                    <Button className="bg-darkRed hover:bg-midRed mt-2">
+                        <Link to={RouteIndex} className="flex gap-2 items-center justify-center">
+                            <LayoutDashboard/>
+                            Go to Dashboard
+                        </Link>
+                    </Button>
                 </div>
-                <h2 className="text-3xl font-bold text-gray-800 mb-2">Access Denied – Admins only</h2>
-                <p className="text-gray-500 mt-2">You do not have the required permissions to access this page</p>
-                <h1 className="text-4xl md:text-5xl font-extrabold bg-gradient-to-r from-gray-900 via-darkRed to-midRed text-transparent bg-clip-text mb-3 pb-3">
-                    SheetViz
-                </h1>
-            </div>
+                </>
+                :
+                <>
+                <div className="flex flex-col items-center gap-2 justify-center px-6 text-center font-roboto">
+                    <div className="animate-bounce">
+                        <img src={logo} className='w-12 h-12'/>
+                    </div>
+                    <h2 className="text-2xl font-bold text-gray-800">Sign-In to access this page</h2>
+                    
+                    <Button className="bg-darkRed hover:bg-midRed mt-2">
+                        <Link to={RouteSignIn} className="flex gap-2 items-center justify-center">
+                            <LogIn/>
+                            Sign In
+                        </Link>
+                    </Button>
+                </div>
+                </>
+            }
             </>
         )
     }
