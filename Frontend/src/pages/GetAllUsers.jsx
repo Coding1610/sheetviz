@@ -13,7 +13,7 @@ import {
   } from "@/components/ui/table"
 import { getEnv } from '@/helpers/getEnv'
 import Loading from '@/components/Loading'
-import { Trash, TriangleAlert} from 'lucide-react'
+import { Trash, TriangleAlert, UserX} from 'lucide-react'
 import { deleteData } from '@/helpers/handleDelete'
 import { showToast } from '@/helpers/showToast'
 import moment from 'moment'
@@ -47,11 +47,11 @@ export default function GetAllUsers() {
 
     return (
         <>
-        <div className='w-full pl-5 pr-5 pb-5 sm:pl-10 sm:pr-10 font-roboto mt-5'>
+        <div className='w-full pl-5 pr-5 pb-5 sm:pl-10 sm:pr-10 font-roboto mb-4'>
                 <div className="mb-8 mt-8 ml-5">
                     <h1 className="text-3xl font-bold">User Management</h1>
                     <p className="text-gray-600 mt-2">
-                    Stay in control of your users, Easily manage them
+                    Stay in control of your users and easily manage them
                     </p>
                 </div>
                 <Card className='mx-4 px-2 pt-2'>
@@ -111,3 +111,10 @@ export default function GetAllUsers() {
         </>
     )
 }
+
+{/* <div className="text-gray-500 mb-4">
+                                        <UserX size={32}/>
+                                    </div>
+                                    <h3 className="text-lg font-medium mb-2">No User Found</h3>
+                                    <p className="text-gray-500 mb-6">Your user list is currently empty. Once users are added, they’ll appear here.</p>
+                                </div> */}
