@@ -9,7 +9,7 @@ const uploadToCloudinary = (buffer, fileName) => {
         {
             folder: 'sheetviz',
             resource_type: 'raw',
-            public_id: fileName.replace(/\.[^/.]+$/, '') // remove extension
+            public_id: fileName.replace(/\.[^/.]+$/, '') + '.xlsx' // remove extension
         },
         (err, result) => {
             if (err) return reject(err);

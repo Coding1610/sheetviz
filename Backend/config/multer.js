@@ -28,6 +28,8 @@ function excelFileFilter(req, file, cb) {
     const allowedMimes = [
         'application/vnd.ms-excel', // .xls
         'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet', // .xlsx
+        'text/csv', // .csv
+        'application/csv', // some browsers use this
     ];
     if (!allowedMimes.includes(file.mimetype)) {
         cb(new Error("Only Excel files are allowed."), false);

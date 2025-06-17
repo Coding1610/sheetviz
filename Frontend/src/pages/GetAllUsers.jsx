@@ -13,15 +13,18 @@ import {
   } from "@/components/ui/table"
 import { getEnv } from '@/helpers/getEnv'
 import Loading from '@/components/Loading'
-import { Trash, TriangleAlert, UserX} from 'lucide-react'
+import { Trash, UserRoundX } from 'lucide-react'
 import { deleteData } from '@/helpers/handleDelete'
 import { showToast } from '@/helpers/showToast'
 import moment from 'moment'
 import { Avatar, AvatarFallback, AvatarImage } from '@radix-ui/react-avatar'
+import { useSelector } from 'react-redux'
  
 export default function GetAllUsers() {
 
     const [refreshData, setRefreshData] = useState(false);
+
+    const user = useSelector((state) => state.user);
 
     const {data:userData, loading, error} = useFetch(`${getEnv('VITE_API_BASE_URL')}/get-all-users`, {
         method:'get',
@@ -54,6 +57,9 @@ export default function GetAllUsers() {
                     Stay in control of your users and easily manage them
                     </p>
                 </div>
+
+                { userData && userData?.allUsers.length > 1 ?
+                <>
                 <Card className='mx-4 px-2 pt-2'>
                     <Table>
                         <TableHeader className="text-darkRed">
@@ -67,11 +73,11 @@ export default function GetAllUsers() {
                                 </TableRow>
                         </TableHeader>
                         <TableBody>
-                            {userData && userData?.allUsers.length > 0 ?  
-                            
+                            {userData && userData?.allUsers.length > 0   
+                                &&
                             users.map(u => 
                                 <>
-                                <TableRow key={u?._id} className="text-nowrap">
+                                <TableRow key={u?._id} className={`${u?.role === 'Admin' ? 'bg-darkRed/30' : 'bg-none'} text-nowrap`}>
                                     <TableCell>{u?.role}</TableCell>
                                     <TableCell>{u?.name}</TableCell>
                                     <TableCell>{u?.email}</TableCell>
@@ -82,8 +88,8 @@ export default function GetAllUsers() {
                                         </Avatar>
                                     </TableCell>
                                     <TableCell>{u?.createdAt ? moment(u?.createdAt).format('DD-MM-YYYY') : '_'}</TableCell>
-                                    <TableCell className="flex gap-2 items-center">
-                                        <Button onClick={() => handleDelete(u?._id)} className="rounded-full px-2.5 bg-white  border-none shadow-none hover:bg-darkRed text-darkRed hover:text-white">
+                                    <TableCell className="flex items-center">
+                                        <Button onClick={() => handleDelete(u?._id)} className={` ${u?.role === 'Admin' ? 'hidden bg-darkRed/30' : 'bg-white' } rounded-full px-2.5 border-none shadow-none hover:bg-darkRed text-darkRed hover:text-white`}>
                                             <Link>
                                                 <Trash size={16}/>
                                             </Link>
@@ -92,29 +98,21 @@ export default function GetAllUsers() {
                                 </TableRow>
                                 </>    
                             )
-                            :
-                            <>
-                                <TableRow>
-                                    <TableCell colSpan={6}>
-                                        <div className='cursor-not-allowed rounded-md p-2 shadow-md flex justify-center items-center text-red-600 gap-1 bg-gray-50 w-max mt-4'>
-                                            <TriangleAlert size={20} />
-                                            <p className='font-medium'>users are not found</p>
-                                        </div>   
-                                    </TableCell>
-                                </TableRow>
-                            </>
                             }
                         </TableBody>
                     </Table>
-            </Card>
+                </Card>
+                </>
+                :
+                <>
+                <Card className="p-8 text-center">
+                    <UserRoundX className='text-center w-full text-darkRed mb-3' size={32}/>
+                    <h3 className="text-lg font-medium mb-3">No User Found</h3>
+                    <p className="text-gray-500">Your user list is currently empty, once users are added, they’ll appear here</p>
+                 </Card>
+                </>
+            }
         </div>
         </>
     )
 }
-
-{/* <div className="text-gray-500 mb-4">
-                                        <UserX size={32}/>
-                                    </div>
-                                    <h3 className="text-lg font-medium mb-2">No User Found</h3>
-                                    <p className="text-gray-500 mb-6">Your user list is currently empty. Once users are added, they’ll appear here.</p>
-                                </div> */}

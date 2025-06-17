@@ -10,7 +10,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { getEnv } from '@/helpers/getEnv';
 import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
-import { Camera, Save } from 'lucide-react';
+import { Camera, Save, CheckCircle, Loader2 } from 'lucide-react';
 import { Textarea } from '@/components/ui/textarea';
 import { useFetch } from '@/hooks/useFtech';
 import Loading from '@/components/Loading';
@@ -21,6 +21,7 @@ export default function Profile() {
 
     const [file,setFile] = useState();
     const [filePreview, setFilePreview] = useState();
+    const [uploadStatus, setUploadStatus] = useState('idle');
 
     const user = useSelector((state) => state.user);
     const userId = user?.user?._id;
@@ -99,7 +100,7 @@ export default function Profile() {
   
     return (
     <>
-        <Card className="w-[600px] pb-4 shadow-none pt-6">
+        <Card className="w-[600px] pb-4 shadow-none pt-6 font-roboto">
             <CardContent>
 
                 <div className='flex justify-center items-center mb-4'>
@@ -184,12 +185,34 @@ export default function Profile() {
                                         />
                                     </div>
                                     <div className='font-roboto font-normal w-full mt-6'>
-                                        <Button type="submit" className="w-full bg-darkRed hover:bg-midRed rounded-lg font-roboto">
-                                            <Save/>
-                                            Save Changes
+                                        <Button
+                                            className={`w-full rounded-lg flex items-center justify-center gap-2 text-white transition-colors
+                                            ${uploadStatus === 'uploaded' ? 'bg-green-600 cursor-not-allowed' :
+                                                uploadStatus === 'uploading' ? 'bg-gray-600 cursor-wait' :
+                                                'bg-darkRed hover:bg-midRed'}
+                                            `}
+                                            disabled={uploadStatus !== 'idle'}
+                                        >
+                                            {
+                                            uploadStatus === 'uploading' ? (
+                                                <>
+                                                <Loader2 className='w-5 animate-spin' />
+                                                <span>Saving...</span>
+                                                </>
+                                            ) : uploadStatus === 'uploaded' ? (
+                                                <>
+                                                <CheckCircle className='w-5' />
+                                                <span>Saved</span>
+                                                </>
+                                            ) : (
+                                                <>
+                                                <Save className='w-5'/>
+                                                Save Changes
+                                                </>
+                                            )
+                                            }
                                         </Button>
                                     </div>
-
                                 </form>
                         </Form>
                 </div>

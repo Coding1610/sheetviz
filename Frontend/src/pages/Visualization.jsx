@@ -168,7 +168,7 @@ const Visualization = () => {
           
           <div className="lg:col-span-2">
             <Tabs defaultValue="visualization" className="w-full">
-              <TabsList className="mb-6 bg-white">
+              <TabsList className="mb-6 rounded-lg">
                 <TabsTrigger className="p-2 rounded-lg " value="visualization">Visualization</TabsTrigger>
                 <TabsTrigger className="p-2 rounded-lg " value="data">Data Table</TabsTrigger>
               </TabsList>
@@ -349,14 +349,6 @@ const Visualization = () => {
                       <span>New Upload</span>
                     </Link>
                   </button>
-
-                  {/* <button
-                    onClick={handleUpload} 
-                    className="w-full py-2 px-4 rounded-lg flex items-center justify-center gap-2 bg-darkRed hover:bg-midRed text-white transition-colors"
-                  >
-                      <CloudUpload className='text-white w-5'/>
-                      <span>Save to Cloud</span>
-                  </button> */}
 
                   <button
                     onClick={handleUpload}
