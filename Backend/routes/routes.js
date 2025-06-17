@@ -45,6 +45,7 @@ const UploadFile = require('../controllers/UploadFile');
 const { GetUploadedFilesById } = require('../controllers/GetUploadedFilesById');
 const { DeleteFile } = require('../controllers/DeleteFile');
 const { GetSingleFile } = require('../controllers/GetSingleFile');
+const { GetAllFiles } = require('../controllers/GetAllFiles');
 
 // create routes
 router.post('/register', Register);
@@ -55,7 +56,6 @@ router.get('/logout', Authenticate, Logout);
 // Authentication Route
 router.get('/get-user/:userid', Authenticate, GetUser);
 router.put('/update-user/:userid', Authenticate, upload.single('file'), UpdateUser);
-router.get('/get-all-users', Authenticate, GetAllUsers);
 router.delete('/user/delete/:id', Authenticate, DeleteUser);
 
 // Category Routes
@@ -106,5 +106,11 @@ router.delete('/delete-file/:fileId', Authenticate, DeleteFile);
 
 // Get single file by Id
 router.get('/file-view/:fileId', Authenticate, GetSingleFile);
+
+// Get all files
+router.get('/get-all-files', Authenticate, AdminView, GetAllFiles);
+
+// Get all users
+router.get('/get-all-users', Authenticate, AdminView, GetAllUsers);
 
 module.exports = router;
