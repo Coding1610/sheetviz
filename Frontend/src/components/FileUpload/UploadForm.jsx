@@ -125,7 +125,7 @@ const UploadForm = () => {
         {!file && (
             <div
             className={`upload-area border-2 border-dashed rounded-lg p-12 text-center ${
-                isDragging ? 'border-darkRed bg-brandpurplesoft/40' : 'border-brandpurplesoft'
+                isDragging ? 'border-darkRed bg-brandpurplesoft/40' : 'border-brandpurplesoft bg-white'
             } transition-all duration-200`}
             onDragEnter={handleDragEnter}
             onDragOver={handleDragOver}

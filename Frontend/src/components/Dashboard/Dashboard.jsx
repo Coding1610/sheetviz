@@ -2,12 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger
-} from "@/components/ui/dropdown-menu";
 import { Upload, FilePlus2, FileX2 } from 'lucide-react';
 import { RouteUploadFile } from '@/helpers/RouteName';
 import { useSelector } from 'react-redux';
@@ -27,7 +21,11 @@ const Dashboard = () => {
     
     if(loading) return <Loading/>
 
-    return (
+    return(
+        <>
+        {user?.user?.role === 'User' 
+        ?          
+        <>
         <div className="mx-auto animate-fade-in w-full pl-14 pr-14 font-roboto mt-6 mb-8">
         <div className="mb-8 animate-fade-in">
             <h1 className="text-3xl font-bold">Welcome back, {user?.user?.name}</h1>
@@ -103,6 +101,34 @@ const Dashboard = () => {
             </>
         }
         </div>
+        </>
+        :
+        <>
+        <div className="mx-auto animate-fade-in w-full pl-14 pr-14 font-roboto mt-6 mb-8">
+            <div className="mb-8 animate-fade-in">
+                <h1 className="text-3xl font-bold">Welcome back, {user?.user?.name}</h1>
+                <p className="text-gray-500 mt-2">Monitor platform activity, manage users and files, and ensure smooth system operations</p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8 staggered-animate">
+                <Card className="bg-darkRed text-white pt-3">
+                    <CardContent className="flex flex-col items-center justify-center h-40">
+                        <div className="text-4xl font-bold mb-2">{fileData?.files?.length > 0 ? fileData?.files?.length : 0}</div>
+                        <div className="text-lg">Total Users</div>
+                    </CardContent>
+                </Card>
+
+                <Card className="pt-3 border border-gray-200">
+                    <CardContent className="flex flex-col items-center justify-center h-40">
+                        <div className="text-4xl font-bold mb-2 text-darkRed">7</div>
+                        <div className="text-lg text-gray-700">Total Files</div>
+                    </CardContent>
+                </Card>
+            </div>
+        </div>
+        </>
+        }
+        </>
     );
 };
 

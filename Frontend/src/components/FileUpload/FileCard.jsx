@@ -31,7 +31,7 @@ export default function FileCard({
 
     return (
         <>
-        <div className="border-2 border-gray-200/80 rounded-lg p-4 hover:border-midRed transition-colors animate-fade-in font-roboto">
+        <div className="bg-white border-2 border-gray-200/80 rounded-lg p-4 hover:border-midRed transition-colors animate-fade-in font-roboto">
             <div className="flex justify-between">
                 <div>
                     <h3 className="font-medium">{name}</h3>

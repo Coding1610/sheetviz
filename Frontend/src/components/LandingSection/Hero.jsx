@@ -10,7 +10,7 @@ const Hero = () => {
   const user = useSelector((state) => state.user);
 
   return (
-    <div className="hero-gradient min-h-[90vh] flex flex-col justify-center items-center px-6 relative overflow-hidden">
+    <div className="hero-gradient min-h-screen flex flex-col justify-center items-center px-6 relative overflow-hidden">
       
       <div className="absolute top-0 right-0 w-full h-full overflow-hidden">
         <div className="absolute top-10 right-10 w-64 h-64  rounded-full blur-3xl"></div>

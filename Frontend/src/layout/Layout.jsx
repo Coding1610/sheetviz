@@ -11,7 +11,7 @@ export default function Layout() {
     <SidebarProvider>
         <Navbar/>
         <AppSidebar/>
-        <main className='w-full'>
+        <main className='w-full bg-gray-50'>
             <div className='w-full min-h-[calc(100vh-35px)] pt-[70px] flex justify-center items-center'>
                 <Outlet/>
             </div>
