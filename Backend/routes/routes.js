@@ -46,6 +46,7 @@ const { GetUploadedFilesById } = require('../controllers/GetUploadedFilesById');
 const { DeleteFile } = require('../controllers/DeleteFile');
 const { GetSingleFile } = require('../controllers/GetSingleFile');
 const { GetAllFiles } = require('../controllers/GetAllFiles');
+const { DeleteFileByAdmin } = require('../controllers/DeleteFileByAdmin');
 
 // create routes
 router.post('/register', Register);
@@ -101,9 +102,11 @@ router.post('/upload-file', Authenticate, uploadExcel.single('file'), UploadFile
 // Get Uploaded file by User Id
 router.get('/uploaded-files/:id', Authenticate, GetUploadedFilesById);
 
-// Delete file by File Id
+// Delete file by File Id - User
 router.delete('/delete-file/:fileId', Authenticate, DeleteFile);
 
+// Delete file by File Id - Admin
+router.delete('/delete-file-by-admin/:fileId', AdminView, DeleteFileByAdmin);
 // Get single file by Id
 router.get('/file-view/:fileId', Authenticate, GetSingleFile);
 

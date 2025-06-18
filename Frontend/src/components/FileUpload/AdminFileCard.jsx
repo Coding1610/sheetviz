@@ -33,7 +33,7 @@ export default function AdminFileCard({
     const [open, setOpen] = useState(false); // dialog state
 
     const handleDelete = async () => {
-        const response = await deleteData(`${getEnv('VITE_API_BASE_URL')}/delete-file/${fileId}`);
+        const response = await deleteData(`${getEnv('VITE_API_BASE_URL')}/delete-file-by-admin/${fileId}`);
         if(response){
             navigate(0);
         }

@@ -29,30 +29,32 @@ exports.Register = async (req, res, next) => {
             newUser,
         });
 
-        const subject = `👋 Welcome to BlogBrew, ${name}!`;
+        const subject = `👋 Welcome to SheetViz, ${name}!`;
+
         const html = `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: auto; border: 1px solid #ddd; border-radius: 8px;">
-            <div style="background-color: #3A59D1; color: white; padding: 16px 24px;">
-            <h2 style="margin: 0;">🎉 Welcome to BlogBrew</h2>
+            <div style="background-color: #7A1CAC; color: white; padding: 16px 24px;">
+            <h2 style="margin: 0;">📊 Welcome to SheetViz</h2>
             </div>
-
+        
             <div style="padding: 20px;">
             <p style="font-size: 16px;">Hello <strong>${name}</strong>,</p>
             <p style="font-size: 15px;">
-                We're thrilled to have you on board! BlogBrew is your space to share ideas, stories, and opinions.
+                We're excited to have you with us! SheetViz lets you upload Excel or CSV files and instantly generate AI insights and 2D/3D visual charts.
             </p>
-            <p>✨ Start your journey by publishing your first blog post!</p>
-
+            <p>✨ Start exploring your data today!</p>
+        
             <div style="margin: 30px 0;">
-                <a href="https://blogbrew.vercel.app/" style="background-color: #3A59D1; color: #fff; padding: 12px 20px; text-decoration: none; border-radius: 6px;">📝 Explore BlogBrew</a>
+                <a href="http://localhost:5173/" style="background-color: #7A1CAC; color: #fff; padding: 12px 20px; text-decoration: none; border-radius: 6px;">📂 Go to SheetViz</a>
             </div>
-
+        
             <hr style="border-top: 1px solid #ddd;" />
-            <p style="font-size: 13px; color: #888;">If you didn’t sign up for BlogBrew, you can ignore this email.</p>
+            <p style="font-size: 13px; color: #888;">If you didn’t sign up for SheetViz, you can ignore this email.</p>
             </div>
         </div>
         `;
-        const text = `Welcome to BlogBrew, ${name}! Start publishing your stories today.`;
+        
+        const text = `Welcome to SheetViz, ${name}! Upload your spreadsheet and get insights with visual charts. Visit https://sheetviz.vercel.app/`;        
 
         await sendMailToAuthor({ to: email, subject, html, text });
 
