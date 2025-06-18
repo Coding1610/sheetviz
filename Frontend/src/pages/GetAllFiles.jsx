@@ -13,8 +13,6 @@ export default function GetAllFiles() {
         credentials:'include'
     },[]);
 
-    console.log(fileData);
-    
     if(loading) return <Loading/>
 
     return (

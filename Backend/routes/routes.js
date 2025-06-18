@@ -108,9 +108,9 @@ router.delete('/delete-file/:fileId', Authenticate, DeleteFile);
 router.get('/file-view/:fileId', Authenticate, GetSingleFile);
 
 // Get all files
-router.get('/get-all-files', Authenticate, AdminView, GetAllFiles);
+router.get('/get-all-files', AdminView, GetAllFiles);
 
 // Get all users
-router.get('/get-all-users', Authenticate, AdminView, GetAllUsers);
+router.get('/get-all-users', AdminView, GetAllUsers);
 
 module.exports = router;

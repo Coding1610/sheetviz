@@ -388,7 +388,7 @@ const ChartVisualizer = ({ data, xAxis, yAxis }) => {
         </div>
         
         <div className="flex flex-wrap gap-2 mt-6 justify-end">
-          <Button  className="rounded-lg" variant="outline" onClick={shareChart}>
+          {/* <Button  className="rounded-lg" variant="outline" onClick={shareChart}>
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mr-2">
               <circle cx="18" cy="5" r="3"></circle>
               <circle cx="6" cy="12" r="3"></circle>
@@ -397,7 +397,7 @@ const ChartVisualizer = ({ data, xAxis, yAxis }) => {
               <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
             </svg>
             Share
-          </Button>
+          </Button> */}
           <Button  className="rounded-lg" variant="outline" onClick={downloadPNG}>
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mr-2">
               <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>

@@ -3,8 +3,11 @@ const {handleError} = require('../helpers/handleError');
 
 exports.GetAllUsers = async(req,res,next) => {
 
+    console.log("Hello");
+
     try {  
         const allUsers = await User.find();
+        console.log("Hello 2");
         res.status(200).json(
             {
                 success:true,

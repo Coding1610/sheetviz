@@ -10,7 +10,7 @@ exports.Register = async (req, res, next) => {
         const { name, email, password } = req.body;
 
         if (!name || !email || !password) {
-            return next(handleError(400, 'Please fill all the fields.'));
+            return next(handleError(400, 'Please fill all the fields'));
         }
 
         const checkUser = await User.findOne({ email });
