@@ -9,11 +9,8 @@ import {
     SidebarMenuItem,
   } from "@/components/ui/sidebar"
 import { Link } from 'react-router-dom'
-import { House, SquareStack, Users, MessageCircleMore, NotepadText, FileUp, FileClock  } from 'lucide-react'
-import { RouteIndex, RouteBlog, RouteCateDetails, RouteGetAllUsers, RouteGetComments, RouteUploadFile, RouteUploadedFiles, RouteGetAllFiles } from '@/helpers/RouteName'
-import { useFetch } from '@/hooks/useFtech'
-import { getEnv } from '@/helpers/getEnv'
-import Loading from './Loading'
+import { House, Users, FileUp, FileClock  } from 'lucide-react'
+import { RouteIndex, RouteGetAllUsers, RouteUploadFile, RouteUploadedFiles, RouteGetAllFiles } from '@/helpers/RouteName'
 import { useSelector } from 'react-redux'
 import logo from '../assets/file.png'
 import { Files, LayoutDashboard } from 'lucide-react'
@@ -21,13 +18,6 @@ import { Files, LayoutDashboard } from 'lucide-react'
 export default function AppSidebar() {
 
     const user = useSelector((state) => state.user);
-
-    const {data:categoryData, loading} = useFetch(`${getEnv('VITE_API_BASE_URL')}/category/show-all`, {
-        method:'get',
-        credentials:'include'
-    });
-
-    if(loading) return <Loading/>
 
     return (
     <>

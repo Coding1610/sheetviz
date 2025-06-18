@@ -7,19 +7,8 @@ import Profile from './pages/Profile'
 import SignIn from './pages/SignIn'
 import SignUp from './pages/SignUp'
 
-import CateDeatils from './pages/Categories/CateDeatils'
-import AddCate from './pages/Categories/AddCate'
-import EditCate from './pages/Categories/EditCate'
-
-import AddBlog from './pages/Blog/AddBlog'
-import EditBlog from './pages/Blog/EditBlog'
-import BlogDeatils from './pages/Blog/BlogDeatils'
-import SingleBlogDetail from './pages/Blog/SingleBlogDetail'
-
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import { RouteLandingPage, RouteBlogDetails, RouteIndex, RouteSignIn, RouteSignUp, RouteBlogByCategory, RouteSearch, RouteGetAllUsers, RouteProfileUser, RouteProfileAdmin, RouteNotFound, RouteUploadFile, RouteChartVisualization, RouteFileView, RouteUploadedFiles, RouteGetAllFiles } from './helpers/RouteName'
-import BlogByCategory from './components/BlogByCategory'
-import SearchResult from './components/SearchResult'
+import { RouteLandingPage, RouteIndex, RouteSignIn, RouteSignUp, RouteGetAllUsers, RouteProfileUser, RouteProfileAdmin, RouteNotFound, RouteUploadFile, RouteChartVisualization, RouteFileView, RouteUploadedFiles, RouteGetAllFiles } from './helpers/RouteName'
 import GetAllUsers from './pages/GetAllUsers'
 import ClientRouteProtection from './components/ClientRouteProtection'
 import AdminRouteProtection from './components/AdminRouteProtection'
@@ -53,11 +42,6 @@ export default function App() {
                 <Route path={RouteChartVisualization()} element={<Visualization/>} />
                 <Route path={RouteFileView()} element={<FileView/>} />
                 <Route path={RouteUploadedFiles} element={<UploadedFiles/>} />
-                {/* <Route path={RouteGetMyBlogs} element={<GetMyBlogs/>} />
-                <Route path={RouteMyBlogsComments} element={<MyBlogsComments/>} />
-                <Route path={RouteCommentsByMe} element={<CommentsByMe/>} />
-                <Route path={RouteBlogAdd} element={<AddBlog/>}/>
-                <Route path={RouteBlogEdit()} element={<EditBlog/>}/> */}
               </Route>
 
               {/* Admin Routes */}
@@ -65,17 +49,7 @@ export default function App() {
                 <Route path={RouteProfileAdmin} element={<Profile/>}/>
                 <Route path={RouteGetAllUsers} element={<GetAllUsers/>}/>
                 <Route path={RouteGetAllFiles} element={<GetAllFiles/>} />
-                {/* <Route path={RouteCateDetails} element={<CateDeatils/>}/> */}
-                {/* <Route path={RouteAddCate} element={<AddCate/>}/> */}
-                {/* <Route path={RouteEditCate()} element={<EditCate/>}/> */}
-                {/* <Route path={RouteBlog} element={<BlogDeatils/>}/> */}
-                {/* <Route path={RouteGetComments} element={<GetComments/>}/> */}
               </Route>
-
-              {/* Public Routes */}
-              <Route path={RouteBlogDetails()} element={<SingleBlogDetail/>}/>
-              <Route path={RouteBlogByCategory()} element={<BlogByCategory/>}/>
-              <Route path={RouteSearch()} element={<SearchResult/>} />
 
             </Route>
 

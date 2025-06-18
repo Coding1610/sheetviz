@@ -14,11 +14,37 @@ const Dashboard = () => {
 
     const user = useSelector((state) => state.user);
 
-    const {data:fileData, loading, error} = useFetch(`${getEnv('VITE_API_BASE_URL')}/uploaded-files/${user?.user?._id}`, {
+    const {data:fileData, loading} = useFetch(`${getEnv('VITE_API_BASE_URL')}/uploaded-files/${user?.user?._id}`, {
+        method:'get',
+        credentials:'include'
+    },[]);
+
+    // get user count
+    const {data:userCount} = useFetch(`${getEnv('VITE_API_BASE_URL')}/get-user-count`, {
+        method:'get',
+        credentials:'include'
+    },[]);
+
+    // get file count
+    const {data:fileCount} = useFetch(`${getEnv('VITE_API_BASE_URL')}/get-file-count`, {
         method:'get',
         credentials:'include'
     },[]);
     
+    // get file storage
+    const {data:fileStorage} = useFetch(`${getEnv('VITE_API_BASE_URL')}/get-file-storage`, {
+        method:'get',
+        credentials:'include'
+    },[]);
+
+    // get cloudinary storage 
+    // const {data:cloudinaryStorage} = useFetch(`${getEnv('VITE_API_BASE_URL')}/get-cloudinary-storage`, {
+    //     method:'get',
+    //     credentials:'include'
+    // },[]);
+
+    // console.log(cloudinaryStorage);
+
     if(loading) return <Loading/>
 
     return(
@@ -104,27 +130,35 @@ const Dashboard = () => {
         </>
         :
         <>
-        <div className="mx-auto animate-fade-in w-full pl-14 pr-14 font-roboto mt-6 mb-8">
+        <div className="mx-auto animate-fade-in w-full pl-14 pr-14 font-roboto mt-6 mb-6">
             <div className="mb-8 animate-fade-in">
                 <h1 className="text-3xl font-bold">Welcome back, {user?.user?.name}</h1>
                 <p className="text-gray-500 mt-2">Monitor platform activity, manage users and files, and ensure smooth system operations</p>
             </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8 staggered-animate">
-                <Card className="bg-darkRed text-white pt-3">
-                    <CardContent className="flex flex-col items-center justify-center h-40">
-                        <div className="text-4xl font-bold mb-2">{fileData?.files?.length > 0 ? fileData?.files?.length : 0}</div>
-                        <div className="text-lg">Total Users</div>
-                    </CardContent>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 staggered-animate">
+                <Card className="border-dashed border-2 border-darkRed flex flex-col justify-center items-center h-[250px] bg-white text-darkRed">
+                    <h2 className='text-5xl font-bold'>{userCount?.userCount}</h2>
+                    <p className='text-xl'>Total Users</p>
                 </Card>
-
-                <Card className="pt-3 border border-gray-200">
-                    <CardContent className="flex flex-col items-center justify-center h-40">
-                        <div className="text-4xl font-bold mb-2 text-darkRed">7</div>
-                        <div className="text-lg text-gray-700">Total Files</div>
-                    </CardContent>
+                <Card className="border-dashed border-2 border-darkRed flex flex-col justify-center items-center h-[250px] bg-white text-darkRed">
+                    <h2 className='text-5xl font-bold'>{fileCount?.fileCount}</h2>
+                    <p className='text-xl'>Total Files</p>
                 </Card>
+                {/* <Card className="border-dashed border-2 border-darkRed flex flex-col justify-center items-center h-[250px] bg-white text-darkRed">
+                <h2 className='text-5xl font-bold'>{fileStorage?.storage?.megabytes}</h2>
+                    <p className='text-xl'>File Storage</p>
+                </Card> */}
+                {/* <Card className="flex flex-col justify-center items-center h-[250px] bg-darkRed text-white">
+                    <h2 className='text-5xl font-bold'>10.6 MB</h2>
+                    <p className='text-xl'>Cloudinary Storage</p>
+                </Card> */}
             </div>
+
+            <Card className="staggered-animate mt-6 bg-darkRed flex flex-col justify-center items-center h-[250px]  text-white">
+                <h2 className='text-5xl font-bold'>{fileStorage?.storage?.megabytes}</h2>
+                    <p className='text-xl'>File Storage</p>
+                </Card>
+
         </div>
         </>
         }
