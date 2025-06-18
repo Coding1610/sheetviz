@@ -4,7 +4,7 @@ import { Button } from '../ui/button'
 import { Link } from 'react-router-dom'
 import { deleteData } from '@/helpers/handleDelete'
 import { getEnv } from '@/helpers/getEnv'
-import { Eye, Trash } from 'lucide-react'
+import { Download, Eye, Trash } from 'lucide-react'
 import { showToast } from '@/helpers/showToast'
 import { useNavigate } from 'react-router-dom'
 import { RouteFileView } from '@/helpers/RouteName'
@@ -24,12 +24,15 @@ export default function FileCard({
     name,
     size,
     date,
-    fileHeader
+    fileHeader,
+    cloudinaryURL
 }) {
     const navigate = useNavigate();
     const [confirmationText, setConfirmationText] = useState('');
     const requiredText = `delete-${name}`;
     const [open, setOpen] = useState(false); // dialog state
+
+    const forceDownloadURL = cloudinaryURL?.replace("/upload/", "/upload/fl_attachment/");
 
     const handleDelete = async () => {
         const response = await deleteData(`${getEnv('VITE_API_BASE_URL')}/delete-file/${fileId}`);
@@ -59,6 +62,13 @@ export default function FileCard({
                     </div>
                 </div>
                 <div className='flex gap-1'>
+
+                    <Button className="rounded-full px-2.5 bg-white border-none shadow-none hover:bg-darkRed text-darkRed hover:text-white">
+                        <a href={forceDownloadURL} download={name}>
+                            <Download size={16} />
+                        </a>
+                    </Button>
+
                     <Button className="rounded-full px-2.5 bg-white border-none shadow-none hover:bg-darkRed text-darkRed hover:text-white">
                         <Link to={RouteFileView(fileId)}>
                             <Eye size={16} />

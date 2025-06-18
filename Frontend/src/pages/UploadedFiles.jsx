@@ -50,6 +50,7 @@ export default function UploadedFiles() {
                                 size={file.size}
                                 date={file.createdAt}
                                 fileHeader={fileHeader}
+                                cloudinaryURL={file.cloudinaryURL}
                                 />
                         </>
                     )
