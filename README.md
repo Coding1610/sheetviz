@@ -34,6 +34,8 @@ Welcome to **SheetViz**, a powerful MERN-based web application that lets users u
 - 📋 View Uploaded Files (Preview / Download / Delete)
 - 🗂️ Empty state page when no files exist
 - 🧑‍💼 Manage personal profile
+- 📧 Email Notifications
+  - File uploaded to cloud email
 
 ### 🛡️ Admin
 - 📊 Admin Dashboard Cards:
@@ -43,11 +45,10 @@ Welcome to **SheetViz**, a powerful MERN-based web application that lets users u
   - Total Cloudinary Storage
 - 👥 Manage all registered users (View/Delete)
 - 📂 Manage all uploaded files by users (View/Delete)
-- 📧 Email Notifications:
+- 📧 Email Notifications
   - Welcome email on registration
   - User deletion email
   - File deletion email
-  - File uploaded to cloud email
 
 ---
 
