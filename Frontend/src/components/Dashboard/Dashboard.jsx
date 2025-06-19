@@ -38,10 +38,10 @@ const Dashboard = () => {
     },[]);
 
     // get cloudinary storage 
-    // const {data:cloudinaryStorage} = useFetch(`${getEnv('VITE_API_BASE_URL')}/get-cloudinary-storage`, {
-    //     method:'get',
-    //     credentials:'include'
-    // },[]);
+    const {data:cloudinaryStorage} = useFetch(`${getEnv('VITE_API_BASE_URL')}/get-cloudinary-storage`, {
+        method:'get',
+        credentials:'include'
+    },[]);
 
     // console.log(cloudinaryStorage);
 
@@ -130,13 +130,13 @@ const Dashboard = () => {
         </>
         :
         <>
-        <div className="mx-auto animate-fade-in w-full pl-14 pr-14 font-roboto mt-6 mb-6">
+        <div className="mx-auto animate-fade-in w-full px-7 md:px-14 font-roboto mt-6 mb-6">
             <div className="mb-8 animate-fade-in">
                 <h1 className="text-3xl font-bold">Welcome back, {user?.user?.name}</h1>
                 <p className="text-gray-500 mt-2">Monitor platform activity, manage users and files, and ensure smooth system operations</p>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 staggered-animate">
-                <Card className="border-dashed border-2 border-darkRed flex flex-col justify-center items-center h-[250px] bg-white text-darkRed">
+                <Card className="flex flex-col justify-center items-center h-[250px] bg-darkRed text-white">
                     <h2 className='text-5xl font-bold'>{userCount?.userCount}</h2>
                     <p className='text-xl'>Total Users</p>
                 </Card>
@@ -144,21 +144,15 @@ const Dashboard = () => {
                     <h2 className='text-5xl font-bold'>{fileCount?.fileCount}</h2>
                     <p className='text-xl'>Total Files</p>
                 </Card>
-                {/* <Card className="border-dashed border-2 border-darkRed flex flex-col justify-center items-center h-[250px] bg-white text-darkRed">
-                <h2 className='text-5xl font-bold'>{fileStorage?.storage?.megabytes}</h2>
-                    <p className='text-xl'>File Storage</p>
-                </Card> */}
-                {/* <Card className="flex flex-col justify-center items-center h-[250px] bg-darkRed text-white">
-                    <h2 className='text-5xl font-bold'>10.6 MB</h2>
-                    <p className='text-xl'>Cloudinary Storage</p>
-                </Card> */}
-            </div>
-
-            <Card className="staggered-animate mt-6 bg-darkRed flex flex-col justify-center items-center h-[250px]  text-white">
+                <Card className="border-dashed border-2 border-darkRed flex flex-col justify-center items-center h-[250px] bg-white text-darkRed">
                 <h2 className='text-5xl font-bold'>{fileStorage?.storage?.megabytes}</h2>
                     <p className='text-xl'>File Storage</p>
                 </Card>
-
+                <Card className="flex flex-col justify-center items-center h-[250px] bg-darkRed text-white">
+                    <h2 className='text-5xl font-bold'>{cloudinaryStorage?.storage?.megabytes}</h2>
+                    <p className='text-xl'>Cloudinary Storage</p>
+                </Card>
+            </div>
         </div>
         </>
         }
