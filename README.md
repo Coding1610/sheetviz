@@ -4,6 +4,26 @@ Welcome to **SheetViz**, a powerful MERN-based web application that lets users u
 
 ---
 
+<img className="flex justify-center items-center" src='./Screenshots/landing page.png' />
+<img className="flex justify-center items-center" src='./Screenshots/sign-up page.png' />
+<img className="flex justify-center items-center" src='./Screenshots/user dashboard 1.png' />
+<img className="flex justify-center items-center" src='./Screenshots/user file history.png' />
+<img className="flex justify-center items-center" src='./Screenshots/delete file dialog box.png' />
+<img className="flex justify-center items-center" src='./Screenshots/file upload form.png' />
+<img className="flex justify-center items-center" src='./Screenshots/2d & 3d charts.png' />
+<img className="flex justify-center items-center" src='./Screenshots/download chart as png & pdf.png' />
+<img className="flex justify-center items-center" src='./Screenshots/file insights (OPEN AI).png' />
+<img className="flex justify-center items-center" src='./Screenshots/admin dashboard.png' />
+<img className="flex justify-center items-center" src='./Screenshots/uploaded all users files.png' />
+<img className="flex justify-center items-center" src='./Screenshots/delete user dialog box.png' />
+<img className="flex justify-center items-center" src='./Screenshots/uploaded all users files.png' />
+<img className="flex justify-center items-center" src='./Screenshots/email - welcome.png' />
+<img className="flex justify-center items-center" src='./Screenshots/email - file uploaded.png' />
+<img className="flex justify-center items-center" src='./Screenshots/email - account deleted.png' />
+<img className="flex justify-center items-center" src='./Screenshots/email - file deleted.png' />
+
+--- 
+
 ## ✨ Features
 
 ### 🌐 Landing Page
