@@ -58,7 +58,7 @@ export default function SignIn() {
 
   return (
     <>
-        <div className='bg-gradient-to-br from-white via-brandpurplesoft to-darkRed/30 flex justify-center items-center w-screen h-screen font-roboto'>
+        <div className='bg-gradient-to-br from-white via-brandpurplesoft to-darkRed/30 flex justify-center items-center w-screen h-screen font-roboto px-2'>
             <Card className="w-[340px] md:w-[450px] p-6 pt-8 pb-8 ">
                 <div className='w-full flex flex-col gap-2 justify-center items-center mb-6'>
                     <Link to={RouteLandingPage} className='font-roboto font-bold text-2xl flex justify-center items-center gap-2 mb-1'>

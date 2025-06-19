@@ -1,9 +1,9 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Upload, FilePlus2, FileX2 } from 'lucide-react';
-import { RouteUploadFile } from '@/helpers/RouteName';
+import { RouteIndex, RouteUploadFile } from '@/helpers/RouteName';
 import { useSelector } from 'react-redux';
 import { getEnv } from '@/helpers/getEnv';
 import Loading from '../Loading';
@@ -13,6 +13,8 @@ import FileCard from '../FileUpload/FileCard';
 const Dashboard = () => {
 
     const user = useSelector((state) => state.user);
+
+    const navigate = useNavigate();
 
     const {data:fileData, loading} = useFetch(`${getEnv('VITE_API_BASE_URL')}/uploaded-files/${user?.user?._id}`, {
         method:'get',
@@ -48,6 +50,10 @@ const Dashboard = () => {
     if(loading) return <Loading/>
 
     return(
+        <>
+
+        {user?.isLoggedIn 
+        ? 
         <>
         {user?.user?.role === 'User' 
         ?          
@@ -130,7 +136,7 @@ const Dashboard = () => {
         </>
         :
         <>
-        <div className="mx-auto animate-fade-in w-full px-7 md:px-14 font-roboto mt-6 mb-6">
+        <div className="mx-auto animate-fade-in w-full px-7 sm:px-14 font-roboto mt-6 mb-6">
             <div className="mb-8 animate-fade-in">
                 <h1 className="text-3xl font-bold">Welcome back, {user?.user?.name}</h1>
                 <p className="text-gray-500 mt-2">Monitor platform activity, manage users and files, and ensure smooth system operations</p>
@@ -149,11 +155,17 @@ const Dashboard = () => {
                     <p className='text-xl'>File Storage</p>
                 </Card>
                 <Card className="flex flex-col justify-center items-center h-[250px] bg-darkRed text-white">
-                    <h2 className='text-5xl font-bold'>{cloudinaryStorage?.storage?.megabytes}</h2>
+                    <h2 className='text-5xl font-bold'>{cloudinaryStorage?.storage?.megabytes} MB</h2>
                     <p className='text-xl'>Cloudinary Storage</p>
                 </Card>
             </div>
         </div>
+        </>
+        }
+        </>
+        :
+        <>
+        {navigate('/')}
         </>
         }
         </>

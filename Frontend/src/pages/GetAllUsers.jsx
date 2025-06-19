@@ -75,7 +75,7 @@ export default function GetAllUsers() {
     if (loading) return <Loading />
 
     return (
-        <div className="w-full pl-5 pr-5 pb-5 sm:pl-10 sm:pr-10 font-roboto mb-4">
+        <div className="w-full px-7 sm:px-14 pb-5 font-roboto mb-4">
             <div className="mb-8 mt-8 ml-5">
                 <h1 className="text-3xl font-bold">User Management</h1>
                 <p className="text-gray-600 mt-2">

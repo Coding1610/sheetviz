@@ -23,7 +23,7 @@ export default function FileView() {
 
     return (
         <>
-        <div className='mx-auto animate-fade-in w-full pl-10 pr-10 font-roboto mt-8 mb-8'>
+        <div className='mx-auto animate-fade-in w-full px-7 sm:px-14 font-roboto mt-8 mb-8'>
             <Card className="p-6">
                 <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between mb-6">
                 <div>

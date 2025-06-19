@@ -113,7 +113,7 @@ const UploadForm = () => {
     };
 
     return (
-        <div className="mx-auto max-w-5xl animate-fade-in w-full pl-10 pr-10 font-roboto">
+        <div className="mx-auto max-w-5xl animate-fade-in w-full px-7 sm:px-10 font-roboto">
 
             <div className="mb-8 mt-5">
                 <h1 className="text-3xl font-bold">Upload Excel File</h1>
