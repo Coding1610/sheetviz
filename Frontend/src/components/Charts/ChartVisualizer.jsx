@@ -272,61 +272,6 @@ const ChartVisualizer = ({ data, xAxis, yAxis }) => {
       showToast('Error','Failed to download chart as PDF, Please try again');
     }
   };
-
-  const shareChart = async () => {
-    try {
-      if (!chartRef.current) {
-        showToast('Error','Chart element not found');
-        return;
-      }
-  
-      if (navigator.share) {
-        try {
-          const canvas = await html2canvas(chartRef.current, {
-            backgroundColor: '#ffffff',
-            scale: 2,
-            logging: false,
-            useCORS: true,
-          });
-  
-          canvas.toBlob(async (blob) => {
-            if (!blob) {
-              throw new Error('Could not create blob from canvas');
-            }
-  
-            const file = new File([blob], 'chart.png', { type: 'image/png' });
-  
-            try {
-              await navigator.share({
-                title: 'Excel Analytics Chart',
-                text: `Sharing ${yAxis || 'Data'} by ${xAxis || 'Category'} chart`,
-                files: [file],
-              });
-              showToast('Success','Chart shared successfully');
-            } catch (error) {
-              console.log('File sharing failed, falling back to URL sharing', error);
-              await navigator.share({
-                title: 'Excel Analytics Chart',
-                text: `Check out this ${yAxis || 'Data'} by ${xAxis || 'Category'} chart!`,
-                url: window.location.href,
-              });
-              showToast('Success','Chart link shared successfully');
-            }
-          }, 'image/png');
-        } catch (shareError) {
-          console.error('Share failed:', shareError);
-          await navigator.clipboard.writeText(window.location.href);
-          showToast('Success','Chart link copied to clipboard');
-        }
-      } else {
-        await navigator.clipboard.writeText(window.location.href);
-        showToast('Success','Chart link copied to clipboard');
-      }
-    } catch (error) {
-      console.error('Error sharing chart:', error);
-      showToast('Error','Failed to share chart');
-    }
-  };
   
   return (
     <Card className="shadow-md animate-fade-in">
@@ -388,16 +333,6 @@ const ChartVisualizer = ({ data, xAxis, yAxis }) => {
         </div>
         
         <div className="flex flex-wrap gap-2 mt-6 justify-end">
-          {/* <Button  className="rounded-lg" variant="outline" onClick={shareChart}>
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mr-2">
-              <circle cx="18" cy="5" r="3"></circle>
-              <circle cx="6" cy="12" r="3"></circle>
-              <circle cx="18" cy="19" r="3"></circle>
-              <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
-              <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
-            </svg>
-            Share
-          </Button> */}
           <Button  className="rounded-lg" variant="outline" onClick={downloadPNG}>
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mr-2">
               <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
