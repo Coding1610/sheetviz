@@ -4,6 +4,16 @@ Welcome to **SheetViz**, a powerful MERN-based web application that lets users u
 
 ---
 
+## 🚀 Live
+
+### Frontend 
+https://sheetviz.vercel.app
+
+### Backend
+https://sheetviz-backend.onrender.com
+
+---
+
 <img className="flex justify-center items-center" src='./Screenshots/landing page.png' />
 <img className="flex justify-center items-center" src='./Screenshots/sign-up page.png' />
 <img className="flex justify-center items-center" src='./Screenshots/user dashboard 1.png' />
