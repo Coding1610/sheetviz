@@ -58,7 +58,7 @@ const Dashboard = () => {
         {user?.user?.role === 'User' 
         ?          
         <>
-        <div className="mx-auto animate-fade-in w-full pl-14 pr-14 font-roboto mt-6 mb-8">
+        <div className="mx-auto animate-fade-in w-full px-7 sm:px-14 font-roboto mt-6 mb-8">
         <div className="mb-8 animate-fade-in">
             <h1 className="text-3xl font-bold">Welcome back, {user?.user?.name}</h1>
             <p className="text-gray-500 mt-2">Manage your Excel visualizations and create new insights</p>

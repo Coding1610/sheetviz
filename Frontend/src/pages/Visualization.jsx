@@ -157,7 +157,7 @@ const Visualization = () => {
   };
 
   return (
-    <div className="font-roboto mx-auto animate-fade-in w-full px-7 sm:px-14">
+    <div className="font-roboto mx-auto animate-fade-in w-full px-3 sm:px-14">
       <div className="container mx-auto mt-5 pb-12 px-4">
         <div className="mb-8 animate-fade-in">
           <h1 className="text-3xl font-bold">{yAxis || 'Data'} Visualization</h1>
