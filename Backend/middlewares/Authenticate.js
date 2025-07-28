@@ -6,6 +6,8 @@ exports.Authenticate = async(req,res,next) => {
     try {       
         const token = req.cookies.cookie_name;
 
+        // console.log(token);
+
         if(!token){
             return next(handleError(403,'Unathorized'));
         }

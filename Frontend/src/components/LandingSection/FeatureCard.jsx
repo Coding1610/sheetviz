@@ -11,7 +11,7 @@ const FeatureCard = ({
   return (
     <div 
       className={cn(
-        "bg-white rounded-xl p-6 border border-gray-400 card-hover animate-fade-in",
+        "bg-gray-50 rounded-xl p-6 border border-gray-400 card-hover animate-fade-in",
         className
       )}
       style={{ animationDelay: delay }}

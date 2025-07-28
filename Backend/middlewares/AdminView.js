@@ -7,6 +7,8 @@ exports.AdminView = async(req,res,next) => {
     try {       
         const token = req.cookies.cookie_name;
 
+        // console.log(token);
+
         if(!token){
             return next(handleError(456,'Unathorized'));
         }

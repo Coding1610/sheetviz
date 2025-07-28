@@ -143,20 +143,20 @@ const Dashboard = () => {
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 staggered-animate">
                 <Card className="flex flex-col justify-center items-center h-[250px] bg-darkRed text-white">
-                    <h2 className='text-5xl font-bold'>{userCount?.userCount}</h2>
-                    <p className='text-xl'>Total Users</p>
+                    <h2 className='sm:text-5xl text-2xl text-center font-bold'>{userCount?.userCount}</h2>
+                    <p className='text-xl text-center'>Total Users</p>
                 </Card>
                 <Card className="border-dashed border-2 border-darkRed flex flex-col justify-center items-center h-[250px] bg-white text-darkRed">
-                    <h2 className='text-5xl font-bold'>{fileCount?.fileCount}</h2>
-                    <p className='text-xl'>Total Files</p>
+                    <h2 className='sm:text-5xl text-2xl text-center font-bold'>{fileCount?.fileCount}</h2>
+                    <p className='text-xl text-center'>Total Files</p>
                 </Card>
                 <Card className="border-dashed border-2 border-darkRed flex flex-col justify-center items-center h-[250px] bg-white text-darkRed">
-                <h2 className='text-5xl font-bold'>{fileStorage?.storage?.megabytes}</h2>
-                    <p className='text-xl'>File Storage</p>
+                <h2 className='sm:text-5xl text-2xl text-center font-bold'>{fileStorage?.storage?.megabytes}</h2>
+                    <p className='text-xl text-center'>File Storage</p>
                 </Card>
                 <Card className="flex flex-col justify-center items-center h-[250px] bg-darkRed text-white">
-                    <h2 className='text-5xl font-bold'>{cloudinaryStorage?.storage?.megabytes} MB</h2>
-                    <p className='text-xl'>Cloudinary Storage</p>
+                    <h2 className='font-bold sm:text-5xl text-2xl text-center'>{cloudinaryStorage?.storage?.megabytes} MB</h2>
+                    <p className='text-xl text-center'>Cloudinary Storage</p>
                 </Card>
             </div>
         </div>
