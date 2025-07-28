@@ -94,5 +94,5 @@ Welcome to **SheetViz**, a powerful MERN-based web application that lets users u
 
 ## 👤 Dummy User
 
-- Email : jaiminunagar26@gmail.com
-- Password : plokijuh26
+- Email : dummyme00@gmail.com
+- Password : plokijuh00
