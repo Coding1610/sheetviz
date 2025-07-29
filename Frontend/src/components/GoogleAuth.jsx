@@ -27,7 +27,7 @@ export default function GoogleAuth() {
             };
             const response = await fetch(`${getEnv('VITE_API_BASE_URL')}/google-auth`,{
                 method:"post",
-                headers:{'Content-Type':'application/json'},
+                headers:{'Content-type':'application/json'},
                 credentials:'include',
                 body:JSON.stringify(bodyData)
             });

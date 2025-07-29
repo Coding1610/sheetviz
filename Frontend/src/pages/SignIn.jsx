@@ -39,7 +39,7 @@ export default function SignIn() {
         try {
             const response = await fetch(`${getEnv('VITE_API_BASE_URL')}/login`,{
                 method:"post",
-                headers:{'Content-Type':'application/json'},
+                headers:{'Content-type':'application/json'},
                 credentials:'include',
                 body:JSON.stringify(values)
             });

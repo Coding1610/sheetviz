@@ -38,7 +38,7 @@ export default function SignUp() {
         try { 
             const response = await fetch(`${getEnv('VITE_API_BASE_URL')}/register`,{
                 method:"post",
-                headers:{'Content-Type':'application/json'},
+                headers:{'Content-type':'application/json'},
                 body:JSON.stringify(values)
             });
             console.log("Response", response);

@@ -19,7 +19,7 @@ exports.Register = async (req, res, next) => {
             return next(handleError(409, 'User Already Registered'));
         }
 
-        const hashpassword = await bcrypt.hash(password, 10);
+        const hashpassword = await bcrypt.hashSync(password, 10);
 
         const newUser = await User.create({ name, email, password: hashpassword });
 
@@ -45,7 +45,7 @@ exports.Register = async (req, res, next) => {
             <p>✨ Start exploring your data today!</p>
         
             <div style="margin: 30px 0;">
-                <a href="http://localhost:5173/" style="background-color: #7A1CAC; color: #fff; padding: 12px 20px; text-decoration: none; border-radius: 6px;">📂 Go to SheetViz</a>
+                <a href="https://sheetviz.vercel.app" style="background-color: #7A1CAC; color: #fff; padding: 12px 20px; text-decoration: none; border-radius: 6px;">📂 Go to SheetViz</a>
             </div>
         
             <hr style="border-top: 1px solid #ddd;" />
