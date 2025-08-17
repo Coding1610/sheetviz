@@ -7,7 +7,7 @@ exports.Logout = async(req,res,next) => {
     try {
 
         // create cookie
-        res.clearCookie('cookie-name', {
+        res.clearCookie('cookie_name', {
             httpOnly:true,
             secure:process.env.NODE_ENV === 'production',
             sameSite:process.env.NODE_ENV === 'production' ? 'none' : 'strict',

@@ -1,13 +1,23 @@
 {
-    "headers": [
+  "rewrites": [
       {
-        "source": "/(.*)",
-        "headers": [
-          {
-            "key": "Cross-Origin-Opener-Policy",
-            "value": "same-origin-allow-popups"
-          }
-        ]
+          "source": "/((?!api/.*).*)",
+          "destination": "/index.html"
       }
-    ]
-  }
+  ],
+  "headers": [
+      {
+          "source": "/(.*)",
+          "headers": [
+              {
+                  "key": "Cross-Origin-Opener-Policy",
+                  "value": "same-origin-allow-popups"
+              },
+              {
+                  "key": "Cross-Origin-Embedder-Policy",
+                  "value": "cross-origin"
+              }
+          ]
+      }
+  ]
+}
