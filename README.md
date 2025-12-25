@@ -86,7 +86,7 @@ SheetViz is a MERN-based web application that allows users to upload `.xlsx`, `.
 ### Step 1: Clone the Repository
 
 ```bash
-git clone https://github.com/Coding1610/sheetviz
+git clone https://github.com/Coding1610/sheetviz.git
 ```
 
 ### Step 2: Install Dependencies
@@ -126,7 +126,10 @@ VITE_OPENAI_API_KEY=
 VITE_FIREBASE_API_KEY=
 ```
 
+---
+
 ## Dummy User
 - Email: dummyme00@gmail.com
 - Password: plokijuh00
+
 
