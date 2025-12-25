@@ -127,5 +127,6 @@ VITE_FIREBASE_API_KEY=
 ```
 
 ## Dummy User
-Email: dummyme00@gmail.com
-Password: plokijuh00
+- Email: dummyme00@gmail.com
+- Password: plokijuh00
+
