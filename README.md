@@ -1,98 +1,131 @@
-# 📊 SheetViz – Visualize Excel Data with Ease
+# SheetViz – Visualize Excel Data with Ease
 
-Welcome to **SheetViz**, a powerful MERN-based web application that lets users upload `.xlsx`, `.csv`, or `.xls` files to visualize data using beautiful 2D and 3D charts, with AI-generated insights! Built for both regular users and admins, this app provides a seamless data interaction experience.
-
----
-
-<img className="flex justify-center items-center" src='./Screenshots/landing page.png' />
-<img className="flex justify-center items-center" src='./Screenshots/sign-up page.png' />
-<img className="flex justify-center items-center" src='./Screenshots/user dashboard 1.png' />
-<img className="flex justify-center items-center" src='./Screenshots/user file history.png' />
-<img className="flex justify-center items-center" src='./Screenshots/delete file dialog box.png' />
-<img className="flex justify-center items-center" src='./Screenshots/file upload form.png' />
-<img className="flex justify-center items-center" src='./Screenshots/2d & 3d charts.png' />
-<img className="flex justify-center items-center" src='./Screenshots/download chart as png & pdf.png' />
-<img className="flex justify-center items-center" src='./Screenshots/file insights (OPEN AI).png' />
-<img className="flex justify-center items-center" src='./Screenshots/admin dashboard.png' />
-<img className="flex justify-center items-center" src='./Screenshots/uploaded all users files.png' />
-<img className="flex justify-center items-center" src='./Screenshots/delete user dialog box.png' />
-<img className="flex justify-center items-center" src='./Screenshots/email - welcome.png' />
-<img className="flex justify-center items-center" src='./Screenshots/email - file uploaded.png' />
-<img className="flex justify-center items-center" src='./Screenshots/email - account deleted.png' />
-<img className="flex justify-center items-center" src='./Screenshots/email - file deleted.png' />
-
---- 
-
-## ✨ Features
-
-### 🌐 Landing Page
-- Hero section with Sign Up & Sign In buttons
-- Feature highlight cards
-- Developer profile section
-
-### 👤 Authentication
-- 🔐 JWT-based login system
-- 🧠 Zod for form validation
-- ☁️ Google Sign-in via Firebase
-- 🍪 Cookie-based session (7 days)
+SheetViz is a MERN-based web application that allows users to upload `.xlsx`, `.csv`, or `.xls` files and visualize data using interactive 2D and 3D charts. It also provides AI-generated insights for better data understanding. The platform supports both normal users and administrators with dedicated dashboards.
 
 ---
 
-## 👥 Roles & Dashboards
+## Screenshots
 
-### 👤 Normal User
-- 📂 Upload `.xlsx`, `.csv`, `.xls` files via form or drag & drop
-- 👁️ File preview post-upload
-- 📈 Select X & Y axis to visualize charts
-- 📊 2D & 3D Charts:
-  - Line, Bar, Donut, Pie
-  - 3D Bar, 3D Pie, 3D Donut
-- 🧠 AI-Generated Insights & Chart Summary
-- 📥 Download charts as PNG or PDF
-- ☁️ Upload file to Cloudinary
-- 📋 View Uploaded Files (Preview / Download / Delete)
-- 🗂️ Empty state page when no files exist
-- 🧑‍💼 Manage personal profile
-- 📧 Email Notifications
-  - File uploaded to cloud email
-
-### 🛡️ Admin
-- 📊 Admin Dashboard Cards:
-  - Total Users
-  - Total Files
-  - Total File Storage
-  - Total Cloudinary Storage
-- 👥 Manage all registered users (View/Delete)
-- 📂 Manage all uploaded files by users (View/Delete)
-- 📧 Email Notifications
-  - Welcome email on registration
-  - User deletion email
-  - File deletion email
+<img src="./Screenshots/landing page.png" />
+<img src="./Screenshots/sign-up page.png" />
+<img src="./Screenshots/user dashboard 1.png" />
+<img src="./Screenshots/user file history.png" />
+<img src="./Screenshots/delete file dialog box.png" />
+<img src="./Screenshots/file upload form.png" />
+<img src="./Screenshots/2d & 3d charts.png" />
+<img src="./Screenshots/download chart as png & pdf.png" />
+<img src="./Screenshots/file insights (OPEN AI).png" />
+<img src="./Screenshots/admin dashboard.png" />
+<img src="./Screenshots/uploaded all users files.png" />
+<img src="./Screenshots/delete user dialog box.png" />
+<img src="./Screenshots/email - welcome.png" />
+<img src="./Screenshots/email - file uploaded.png" />
+<img src="./Screenshots/email - account deleted.png" />
+<img src="./Screenshots/email - file deleted.png" />
 
 ---
 
-## 🧰 Tech Stack
+## Features
 
-| Category       | Tools / Frameworks |
-|----------------|--------------------|
-| **Frontend**   | React, Redux, Tailwind CSS, shadcn/ui |
-| **Auth**       | Firebase (Google OAuth), JWT, Zod, Cookies |
-| **Backend**    | Node.js, Express.js, MongoDB Atlas |
-| **Emails**     | Nodemailer |
-| **Charts**     | Highcharts (2D & 3D) |
-| **Cloud**      | Cloudinary |
-| **AI Insights**| OpenAI API or custom ML logic |
+### Landing Page
+- Hero section with sign up and sign in actions  
+- Feature overview cards  
+- Developer profile section  
 
----
-
-## 🔐 Middleware
-
-- `authMiddleware` – Secures protected routes and validates JWT
-- `adminMiddleware` – Ensures admin-only access to sensitive endpoints
+### Authentication
+- JWT-based authentication  
+- Zod validation for forms  
+- Google sign-in using Firebase  
+- Cookie-based session valid for seven days  
 
 ---
 
-## 👤 Dummy User
+## Roles and Dashboards
 
-- Email : dummyme00@gmail.com
-- Password : plokijuh00
+### Normal User
+- Upload Excel and CSV files using form or drag and drop  
+- Preview files after upload  
+- Select X and Y axis for visualization  
+- View charts in 2D and 3D formats  
+- Generate AI-based insights  
+- Download charts as PNG or PDF  
+- Store files in Cloudinary  
+- Manage uploaded files  
+- Receive email on file upload  
+
+### Admin
+- View platform analytics  
+- Manage users and files  
+- Receive system notification emails  
+
+---
+
+## Tech Stack
+
+| Category | Tools |
+|--------|-------|
+| Frontend | React, Redux, Tailwind CSS, shadcn/ui |
+| Authentication | Firebase, JWT, Zod, Cookies |
+| Backend | Node.js, Express.js, MongoDB Atlas |
+| Emails | Nodemailer |
+| Charts | Highcharts |
+| Cloud | Cloudinary |
+| AI | OpenAI API |
+
+---
+
+## Middleware
+
+- `authMiddleware` validates JWT tokens  
+- `adminMiddleware` restricts admin access  
+
+---
+
+## Project Setup
+
+### Step 1: Clone the Repository
+
+```bash
+git clone https://github.com/Coding1610/sheetviz
+```
+
+### Step 2: Install Dependencies
+
+#### Backend
+```bash
+cd backend
+npm install
+```
+
+#### Frontend
+```bash
+cd frontend
+npm install
+```
+
+### Step 3: Environment Variables
+
+#### Backend .env
+```env
+PORT=
+CLOUD_NAME=
+API_KEY=
+API_SECRET=
+DATABASE_URL=
+FRONTEND_URL=
+JWT_SECRET_KEY=
+NODE_ENV=
+EMAIL_USER=
+EMAIL_PASS=
+```
+
+#### Frontend .env
+```env
+VITE_API_BASE_URL=
+VITE_OPENAI_API_KEY=
+VITE_FIREBASE_API_KEY=
+```
+
+## Dummy User
+Email: dummyme00@gmail.com
+Password: plokijuh00
