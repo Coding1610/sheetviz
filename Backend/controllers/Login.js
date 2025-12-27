@@ -39,10 +39,18 @@ exports.Login = async(req,res,next) => {
         },process.env.JWT_SECRET_KEY);
 
         // create cookie
+        // res.cookie('cookie_name', token , {
+        //     httpOnly:true,
+        //     secure:process.env.NODE_ENV === 'production',
+        //     sameSite:process.env.NODE_ENV === 'production' ? 'none' : 'strict',
+        //     maxAge: 7 * 24 * 60 * 60 * 1000, // 7 Days
+        //     path:'/'
+        // });
+
         res.cookie('cookie_name', token , {
             httpOnly:true,
-            secure:process.env.NODE_ENV === 'production',
-            sameSite:process.env.NODE_ENV === 'production' ? 'none' : 'strict',
+            secure:true,
+            sameSite:'none',
             maxAge: 7 * 24 * 60 * 60 * 1000, // 7 Days
             path:'/'
         });

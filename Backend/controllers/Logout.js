@@ -14,6 +14,13 @@ exports.Logout = async(req,res,next) => {
             path:'/'
         });
 
+        res.clearCookie('cookie_name', {
+            httpOnly:true,
+            secure:true,
+            sameSite:'none',
+            path:'/'
+        });
+
         // response send
         res.status(200).json(
             {
