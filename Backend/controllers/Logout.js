@@ -9,13 +9,6 @@ exports.Logout = async(req,res,next) => {
         // create cookie
         res.clearCookie('cookie_name', {
             httpOnly:true,
-            secure:process.env.NODE_ENV === 'production',
-            sameSite:process.env.NODE_ENV === 'production' ? 'none' : 'strict',
-            path:'/'
-        });
-
-        res.clearCookie('cookie_name', {
-            httpOnly:true,
             secure:true,
             sameSite:'none',
             path:'/'

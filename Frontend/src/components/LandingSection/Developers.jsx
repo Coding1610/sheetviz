@@ -1,8 +1,8 @@
 import React from 'react';
-import img from '@/assets/github-profile.jpg'
-import { Github, Linkedin, Instagram } from 'lucide-react';
+import img from '@/assets/developer-image.jpg'
+import { Github, Linkedin, Instagram, Globe } from 'lucide-react';
 
-const DeveloperCard = ({ name, role, image, github, linkedin, instagram, delay = "0s" }) => {
+const DeveloperCard = ({ name, role, image, github, linkedin, instagram, portfolio, delay = "0s" }) => {
   return (
     <div 
       className="font-roboto bg-white rounded-xl overflow-hidden shadow-md border border-gray-100 card-hover animate-fade-in w-[450px]"
@@ -52,6 +52,17 @@ const DeveloperCard = ({ name, role, image, github, linkedin, instagram, delay =
               <Instagram size={20} className='hover:text-darkRed text-gray-400' />
             </a>
           )}
+          {portfolio && (
+            <a 
+              href={portfolio} 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="text-gray-600 hover:text-brand-purple transition-colors"
+              aria-label="Portfolio Profile"
+            >
+              <Globe size={20} className='hover:text-darkRed text-gray-400' />
+            </a>
+          )}
         </div>
       </div>
     </div>
@@ -63,9 +74,9 @@ const Developers = () => {
     <section className="py-20 px-6 bg-gray-50" id="developers">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Meet Our Developers</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">Meet Our Developer</h2>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            The talented team behind SheetViz's powerful visualization tools
+            The talented developer behind SheetViz's powerful visualization tools
           </p>
         </div>
         
@@ -77,6 +88,7 @@ const Developers = () => {
             github="https://github.com/Coding1610"
             linkedin="https://linkedin.com/in/yash-prajapati-512451298"
             instagram="https://instagram.com/_yashu_016"
+            portfolio="https://prajapatiyash.framer.website"
             delay="0.1s"
           />
         </div>
